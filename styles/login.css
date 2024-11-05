@@ -20,9 +20,10 @@ body {
 
 #login-form {
     margin-top: 2rem;
-    background-color: #5762D5;
+    background-color: #CE8147;
     width: 30rem;
     color: #fff;
+    border-radius: 20px;
 }
 
 .input-box input::placeholder {
@@ -38,17 +39,25 @@ body {
 }
 
 .input-box input {
-    width: 75%;
+    position: relative;
+    width: 90%;
     height: 3rem;
     background: transparent;
     border: none;
     outline: none;
     border: 2px solid #cecece;
     border-radius: 20px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
 }
 
 .input-box i {
     font-size: 1.5rem;
+    position: absolute;
+    right: 43%;
+    transform: translateY(-50%);
+    padding-top: 3rem;
 }
 
 .login {
@@ -62,9 +71,16 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 5px black;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .login, h2 {
     font-size: 3rem;
     text-align: center;
+}
+
+header, h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 4rem;
 }
