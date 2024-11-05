@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-const { getAllParents, createParent } = require('./controllers/test');
+const { getAllParents, createParent } = require('./test/test');
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
