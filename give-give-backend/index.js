@@ -5,6 +5,11 @@ const bodyParser = require('body-parser');
 const { getAllParents, createParent } = require('./test/test');
 const { login } = require('./api_calls/login');
 const { getProfile } = require('./api_calls/getProfile');
+const { getInventory} = require('./api_calls/getInventory')
+const cors = require('cors');
+
+
+app.use(cors());
 
 // Middleware to parse JSON request bodies
 app.use(express.json());

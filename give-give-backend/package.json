@@ -9,6 +9,7 @@
   "author": "Fabian Kjellberg",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "mssql": "^11.0.1"
   }

@@ -1,7 +1,7 @@
 const { poolPromise } = require('../config/dbConfig')
 
 // GET request to try logging in as a user
-exports.profile = async (req, res) => {
+exports.getProfile = async (req, res) => {
     try {
         const { id } = req.query;
 
