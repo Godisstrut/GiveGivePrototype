@@ -28,6 +28,7 @@ body {
 .input-box input::placeholder {
     color: #fff;
     font-size: 1rem;
+    padding-left: 2px;
 }
 
 .input-box {
