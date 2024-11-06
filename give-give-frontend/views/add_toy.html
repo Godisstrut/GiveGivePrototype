@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add new toy to your inventroy</title>
+  <title> Add new toy to your inventroy </title>
+  <link href="/styles/add_toy.css" rel="stylesheet">
+
 </head>
 
 <body>
+
+  <nav class="nav-bar">
+    <ul>
+        <li><a href = "#inventory"> Inventory </a></li>
+        <li><a href = "#profile"> Profile </a></li>
+    </ul>
+</nav>
 
 
   <!-- Möjlighet för användare att kunna ladda upp bild från lokal enhet  -->
 <div id="upload-photo">
   <form action="upload.php" method="post" enctype="multipart/form-data">
     <label for="photo-upload"> Upload picture of toy you want to scan: </label>
-    <input type="file" id="photo-uplod" name="photo" accept="image/*">
-    <button type="submit"> ladda upp bild </button> <!-- Kan flytta denna till slutet av sidan (send-IMG) -->
+    <input type="file" id="photo-upload" name="photo" accept="image/*">
+    <button type="submit"> Upload picture </Picture> </button> <!-- Kan flytta denna till slutet av sidan (send-IMG) -->
   </form>
 </div>
 
@@ -28,12 +37,11 @@
     <script src="../scripts/camerascripts.js"></script>
   </div> 
 
-  
-  <!-- Knapp för att skicka img till API  -->
-<div id="send-IMG">
-  <button id="send-img-to-api"></button>
 
-</div>
+  <!-- Knapp för att skicka img till API  - kanske vill koppla både cam och upload till denna hmmmmm -->
+  <div id="send-IMG">
+    <button id="send-img-to-api"> Send <img src="" alt=""></button>
+  </div>
 
-</body>
+  </body>
 </html>
