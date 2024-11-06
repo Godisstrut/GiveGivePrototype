@@ -8,13 +8,16 @@
 
 <body>
 
+
   <!-- Möjlighet för användare att kunna ladda upp bild från lokal enhet  -->
 <div id="upload-photo">
-  <form>
-
-
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="photo-upload"> Upload picture of toy you want to scan: </label>
+    <input type="file" id="photo-uplod" name="photo" accept="image/*">
+    <button type="submit"> ladda upp bild </button> <!-- Kan flytta denna till slutet av sidan (send-IMG) -->
   </form>
 </div>
+
 
 <!--  Kamerafunktionen för att kunna ta en bild direkt på sidan -->
  <div id="camera">
@@ -25,6 +28,7 @@
     <script src="../scripts/camerascripts.js"></script>
   </div> 
 
+  
   <!-- Knapp för att skicka img till API  -->
 <div id="send-IMG">
   <button id="send-img-to-api"></button>

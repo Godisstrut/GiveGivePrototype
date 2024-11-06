@@ -9,7 +9,7 @@
 <body>
     <!-- Hela webbsidan-container  -->
     <div id="container">
-
+        <!--  Profil för användare med basic info om användare och användadet-->
         <div id="profile-div">
             <h2> Profile </h2>
             <p>Name: Kalle </p>
@@ -18,19 +18,25 @@
             <h3> Toys </h3>
             <p>Toys traded: </p>
             <p>Toys in inventory: </p>
-           
-
-
 
         </div>
 
 
+        <!--  Container för inventory -->
         <div id="inventory-div">
-            <header>
-                <h1>Inventory</h1>
-            </header>
-
-    
+            
+                <h2>Inventory</h2> 
+                <!--  Varje enskild Toy i inventory Tänker en toy i varje Grid -->
+                <div class="toy-in-inventoy"> Kommer presentera: IMG, titel || om tid finns 2 button för remove - och redigera </div>
+                <div class="toy-in-inventoy"></div>
+                <div class="toy-in-inventoy"></div>
+                
+                <!--  Knapp för att lägga till toy -> leder användaren till add_toy.html -->
+                <div id="ADD-TOY">
+                    <a href="add_toy.html">
+                    <button > Add New Toy to Inventory </button>
+                    </a>
+                </div>
         </div>
 
 
