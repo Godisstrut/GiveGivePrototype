@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const { getAllParents, createParent } = require('./test/test');
 const { login } = require('./api_calls/login');
 const { getProfile } = require('./api_calls/getProfile');
-const { getInventory} = require('./api_calls/getInventory')
+const { getInventory} = require('./api_calls/getInventory');
+const { postImageForAI } = require('./api_calls/postImageForAI');
 const cors = require('cors');
 
 
@@ -28,5 +29,7 @@ app.post('/api/createParent', createParent);    // POST request to create a new 
 
 app.get('/api/login', login); // GET request to validate that a profile exists. and sends back a userID
 app.get('/api/profile', getProfile); // GET request to get profile information from userID
-app.get('/api/getInventory', getInventory) // GET request to get an array of toys from a userID
+app.get('/api/getInventory', getInventory); // GET request to get an array of toys from a userID
+
+app.post('/api/postImageForAI', postImageForAI);
 
