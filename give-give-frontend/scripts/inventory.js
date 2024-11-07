@@ -3,7 +3,7 @@ const inventoryContainer = document.getElementById("inventory-container");
 const profile = document.getElementById('profile');
 
 
-//***Profile***
+//***Data fetch for Profile in inventory***
 
 fetch('http://localhost:3000/api/profile?id=1')
     .then(Response => {
@@ -32,7 +32,7 @@ fetch('http://localhost:3000/api/profile?id=1')
 
 
 
-//***Inventory***
+//***Datafetch for Inventory-list***
 fetch('https://localhost:3000//api/getInventory')
     .then(response => {
         if (!response.ok) {
@@ -45,25 +45,34 @@ fetch('https://localhost:3000//api/getInventory')
     .then(data =>{
         console.log(data);
 
-    })
+        const inventoryContainer = document.getElementById('inventory-container');
+        const toyTemplate = document.getElementById('toy-template').content;
 
-    .catch(error =>{
-        console.error('There was a problem fetchyfetchy op', error);
+
+        
+        //adds new toy to inventory - clones mall - Fill in the data - adds in elements
+        data.forEach(toy => {
+            const toyElement = document.importNode(toyTemplate, true);
+
+            toyElement.querySelector(".toy-image").scr = toy.image || '/resources/img/default_img.jpg';
+            toyElement.querySelector(".toy-title").textContent = toy.title;
+            toyElement.querySelector(".toy-times-traded").textContent = `Times Traded: ${toy.timesTraded}`;
+
+        
+            inventoryContainer.appendChild(toyElement);
+
     });
-    
 
+})
 
-
-//lägger till leksak i inventory - klonar mallen - fyller i data - lägger till färdiga elementet
-toys.forEach(toy => {
-    const ToyElement = template.content.CloneNode(true);
-
-    ToyElement.querySelector(".toy-image").scr = toy.imgSrc;
-    ToyElement.querySelector(".toy-title").textContent = toy.title;
-    ToyElement.querySelector(".toy-image").textContent = `Times Traded: ${toy.timesTraded}`;
-
-    inventoryContainer.appendChild(ToyElement);
-
+.catch(error => {
+    console.error('There was a problem with fetshy op for toy-data in inventory')
 
 
 });
+
+
+
+
+
+
