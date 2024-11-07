@@ -8,9 +8,10 @@ body {
     box-sizing: border-box;
     background: url(/images/toys_background.jpg) no-repeat center center; 
     background-size: cover;
+    height: 100vh;
 }
 
-/* simple styling for the majority of the website*/
+/* container styling for the majority of the website*/
 #container {
     display: flex;
     justify-content: center;

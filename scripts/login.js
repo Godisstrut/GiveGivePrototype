@@ -11,8 +11,12 @@ function login() {
 
     if (email === premadeUser.email && password === premadeUser.password) {
         alert("Login was complete! ")
+    } else if (email === premadeUser.email && password != premadeUser.password) {
+        alert("Login failed! Password incorrect ")
+    } else if (email != premadeUser.email && password === premadeUser.password) {
+        alert("Login failed! Email incorrect ")
     } else {
-        alert("Password or email was invalid! ")
+        alert("Login failed! both email and password were incorrect ")
     }
 }
 
