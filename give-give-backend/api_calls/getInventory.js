@@ -14,11 +14,11 @@ exports.getInventory = async (req, res) => {
         //Query to the database
         const result = await pool.request()
         .input('ID', id)
-        .query('EXEC [dbo].[GetChildProfileFromId] @ChildId = @ID');
+        .query('EXEC [dbo].[GetToysByChildId] @ChildId = @ID');
 
-        //Database returns a 400 error incase the id does not return any profile.
+        //Database returns a 200 error incase the child has no toys.
         if(result.recordset.length === 0) {
-            res.status(400).json({message: 'No profile Found'});
+            res.status(200).json({message: 'No toys in the profiles inventory'});
         }
         //If the profile is found return it.
         else{
