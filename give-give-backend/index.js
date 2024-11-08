@@ -8,6 +8,7 @@ const { getProfile } = require('./api_calls/getProfile');
 const { uploadAndAnalyzeImage } = require ('./test/gemini')
 
 // Middleware to parse JSON request bodies
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/toy-identification", imageRoutes);
