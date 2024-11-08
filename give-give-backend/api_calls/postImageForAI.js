@@ -1,5 +1,6 @@
 const { uploadPixelatedImage } = require('../db_calls/uploadImage')
 
+// POST request to upload an image to the database, connect to gemini and return a form to be filled in
 exports.postImageForAI = async (req, res) => {
     
     try {
@@ -14,9 +15,18 @@ exports.postImageForAI = async (req, res) => {
         // Call the uploadPixelatedImage function to upload the image and create the toy
         const success = await uploadPixelatedImage(image, childId);
 
+        /* TODO
+            Upload images to database, (cutout image, original image)
+
+            Run Gemini to and update the table in the database on the information gathered
+
+            if successfull return 
+        */
+
+
         // Check if the upload was successful and respond accordingly
         if (success) {
-            return res.status(201).json({ message: 'Toy created with uploaded image successfully.' });
+            return res.status(200).json({ message: 'Toy created with uploaded image successfully.' });
         } else {
             return res.status(500).json({ message: 'Failed to create toy or upload image.' });
         }

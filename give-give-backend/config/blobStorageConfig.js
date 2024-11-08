@@ -7,9 +7,11 @@ const AZURE_STORAGE_CONNECTION_STRING = 'insert key here';
 // Initialize the BlobServiceClient
 const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
-// Upload function that accepts a container name
+// Upload function that with a containerName as parameter
 async function uploadImageToBlob(file, containerName) {
     try {
+        
+        //If either file or containerName is missing, an error is sent
         if (!file) throw new Error("No file provided");
         if (!containerName) throw new Error("Container name is required");
 
@@ -25,7 +27,7 @@ async function uploadImageToBlob(file, containerName) {
         const blobName = file.originalname; 
         const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
-        // Upload file buffer to Azure Blob Storage
+        // Upload file to Azure Blob Storage
         await blockBlobClient.uploadData(file.buffer, {
             blobHTTPHeaders: { blobContentType: file.mimetype } 
         });
