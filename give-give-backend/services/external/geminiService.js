@@ -1,5 +1,5 @@
 const { GoogleAIFileManager, GoogleGenerativeAI } = require("@google/generative-ai");
-const config = require("../config/dotenvConfig");
+const config = require("../../config/dotenvConfig");
 
 async function uploadAndAnalyzeImage(imagePath, displayName = "Uploaded Image") {
   try {
