@@ -33,16 +33,16 @@ fetch('http://localhost:3000/api/profile?id=1')
 
 
 //***Datafetch for Inventory-list***
-fetch('https://localhost:3000//api/getInventory')
+fetch('http://localhost:3000/api/getInventory?id=1')
     .then(response => {
         if (!response.ok) {
-            throw new error('Network not workie')
+            throw new Error('Network not workie')
         }
 
-        return Response.json();
+        return response.json();
     })
 
-    .then(data =>{
+    .then(data => {
         console.log(data);
 
         const inventoryContainer = document.getElementById('inventory-container');
@@ -54,9 +54,9 @@ fetch('https://localhost:3000//api/getInventory')
         data.forEach(toy => {
             const toyElement = document.importNode(toyTemplate, true);
 
-            toyElement.querySelector(".toy-image").scr = toy.image || '/resources/img/default_img.jpg';
+            toyElement.querySelector(".toy-image").src = toy.image || '/resources/img/default_img.jpg';
             toyElement.querySelector(".toy-title").textContent = toy.title;
-            toyElement.querySelector(".toy-times-traded").textContent = `Times Traded: ${toy.timesTraded}`;
+            toyElement.querySelector(".toy-times-traded").textContent = `Times Traded: ${toy.TimesTraded}`;
 
         
             inventoryContainer.appendChild(toyElement);
@@ -65,8 +65,8 @@ fetch('https://localhost:3000//api/getInventory')
 
 })
 
-.catch(error => {
-    console.error('There was a problem with fetshy op for toy-data in inventory')
+    .catch(error => {
+        console.error('There was a problem with fetshy op for toy-data in inventory')
 
 
 });
