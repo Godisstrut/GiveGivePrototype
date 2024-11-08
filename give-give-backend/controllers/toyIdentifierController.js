@@ -1,4 +1,4 @@
-const googleAIService = require("../services/googleAIService");
+const googleAIService = require("../services/external/geminiService");
 
 async function handleToyIdentification(req, res) {
   try {

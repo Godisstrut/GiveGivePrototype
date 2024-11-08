@@ -1,4 +1,4 @@
-const { uploadPixelatedImage } = require('../db_calls/uploadImage')
+const { uploadPixelatedImage } = require('../services/internal/uploadImage')
 
 // POST request to upload an image to the database, connect to gemini and return a form to be filled in
 exports.postImageForAI = async (req, res) => {
