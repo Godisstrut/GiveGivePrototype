@@ -5,20 +5,21 @@ const bodyParser = require('body-parser');
 const { getAllParents, createParent } = require('./test/test');
 const { login } = require('./api_calls/login');
 const { getProfile } = require('./api_calls/getProfile');
+const { uploadAndAnalyzeImage } = require ('./test/gemini')
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
-
 // API requests
 
 // Test
-app.get('/api/getAllParents', getAllParents);    // GET request to fetch all users
-app.post('/api/createParent', createParent);    // POST request to create a new user
+/* app.get('/api/getAllParents', getAllParents);    // GET request to fetch all users
+app.post('/api/createParent', createParent);    // POST request to create a new user */
+
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
 
 app.get('/api/login', login); // GET request to validate that a profile exists. and sends back a userID
 app.get('/api/profile', getProfile); // GET request to get profile information from userID
