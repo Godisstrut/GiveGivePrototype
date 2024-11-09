@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { postImageForAi } = require('../controllers/postImageForAI');
+const { postImageForAI } = require('../controllers/postImageForAI');
 
-// Endpoint to get child_id from username to inventory
-router.get('/', postImageForAi);
+// Define the route as a POST request
+router.post('/', postImageForAI);
 
 module.exports = router;

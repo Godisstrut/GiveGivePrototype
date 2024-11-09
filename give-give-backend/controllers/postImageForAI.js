@@ -1,19 +1,26 @@
-const { uploadPixelatedImage } = require('../services/internal/uploadImage')
+const { uploadPixelatedImage } = require('../services/internal/uploadImage');
 
-// POST request to upload an image to the database, connect to gemini and return a form to be filled in
+// POST request to upload an image and process it
 exports.postImageForAI = async (req, res) => {
-    
     try {
+        
         // Extract image and childId from the request body
-        const { image, childId } = req.body;
+        const { childId } = req.body;
+        const imageFile = req.file;
 
-        // Validate that both image and childId are provided
-        if (!image || !childId) {
-            return res.status(400).json({ message: 'Image and childId are required.' });
+        console.log(childId);
+        console.log(imageFile);
+
+        // Validate required fields
+        if (!imageFile || !childId) {
+            return res.status(400).json({ message: 'Image and childId are required.', imageFile: imageFile, childId: childId });
         }
 
-        // Call the uploadPixelatedImage function to upload the image and create the toy
-        const success = await uploadPixelatedImage(image, childId);
+        // Access the image buffer for further processing (e.g., saving to storage or database)
+        const imageBuffer = imageFile.buffer;
+
+        // Call the service to upload and create the toy
+        const success = await uploadPixelatedImage(imageBuffer, childId);
 
         /* TODO
             Upload images to database, (cutout image, original image)
@@ -23,8 +30,7 @@ exports.postImageForAI = async (req, res) => {
             if successfull return 
         */
 
-
-        // Check if the upload was successful and respond accordingly
+        // Check if the upload was successful and respond
         if (success) {
             return res.status(200).json({ message: 'Toy created with uploaded image successfully.' });
         } else {
@@ -34,5 +40,4 @@ exports.postImageForAI = async (req, res) => {
         console.error('Error in postImageForAI:', error);
         res.status(500).json({ message: 'An error occurred during image upload and toy creation.' });
     }
-    
 };

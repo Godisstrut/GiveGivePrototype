@@ -6,11 +6,11 @@ const cors = require('cors');
 const { uploadAndAnalyzeImage } = require ('./test/gemini')
 
 // Import routes
-const { imageRoutes } = require('./routes/imageRoutes');
-const { loginRoutes } = require('./routes/loginRoutes');
-const { getInventoryRoute } = require('./routes/getInventoryRoutes');
-const { getProfileRoute } = require('./routes/getProfileRoutes');
-const { postImageForAIRoute } = require('./routes/postImageForAIRoutes');
+const imageRoutes = require('./routes/imageRoutes');
+const loginRoutes = require('./routes/loginRoutes');
+const getInventoryRoutes = require('./routes/getInventoryRoutes');
+const getProfileRoutes = require('./routes/getProfileRoutes');
+const postImageForAIRoutes = require('./routes/postImageForAIRoutes');
 
 
 // Middleware to parse JSON request bodies
@@ -21,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 app.use("/api/toy-identification", imageRoutes);
 app.use('/api/login', loginRoutes);
-app.use('/api/getInventory', getInventoryRoute);
-app.use('/api/getProfile', getProfileRoute);
-app.use('/api/postImageForAi', postImageForAIRoute)
+app.use('/api/getInventory', getInventoryRoutes);
+app.use('/api/getProfile', getProfileRoutes);
+app.use('/api/postImageForAi', postImageForAIRoutes)
 
 // API requests
 app.listen(port, () => {
