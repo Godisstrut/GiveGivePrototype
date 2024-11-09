@@ -5,7 +5,7 @@ const profile = document.getElementById('profile');
 
 //***Data fetch for Profile in inventory***
 
-fetch('http://localhost:3000/api/profile?id=1')
+fetch('http://localhost:3000/api/getProfile?id=1')
     .then(Response => {
         if (!Response.ok) {
             throw new Error('Network response was not ok');

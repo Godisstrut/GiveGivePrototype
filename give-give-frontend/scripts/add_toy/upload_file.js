@@ -18,18 +18,27 @@
   });
 
 
-  
+
   // Button to send the image data to the API
 sendButton.addEventListener('click', () => {
+  const file = photoUpload.files[0];
+  
   const imageData = previewImg.src;
+
+  // Create a FormData object
+  const formData = new FormData();
+  formData.append('image', file);
+  formData.append('childId', 1);
 
   if (imageData) {
     fetch('http://localhost:3000/api/postImageForAi', { // Corrected syntax for fetch
       method: 'POST', 
-      headers: {
+      body: formData
+      
+      /*headers: {
         'Content-Type': 'application/json', 
-      }, 
-      body: JSON.stringify({ image: imageData, childId: 1 })
+      }, */
+      //body: JSON.stringify({ image: imageData, childId: 1 })
     })
     .then(response => response.json())
     .then(data => {
