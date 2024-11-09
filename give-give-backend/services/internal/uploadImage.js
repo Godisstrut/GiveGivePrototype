@@ -1,5 +1,5 @@
-const { poolPromise } = require('../config/dbConfig')
-const { uploadImageToBlob } = require('../config/blobStorageConfig')
+const { poolPromise } = require('../../config/dbConfig')
+const { uploadImageToBlob } = require('../../config/blobStorageConfig')
 
 exports.uploadPixelatedImage = async(image, id) => {
     try{

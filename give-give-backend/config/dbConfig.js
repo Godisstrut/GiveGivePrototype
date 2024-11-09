@@ -1,5 +1,6 @@
 const sql = require('mssql');
 
+// Database configuration credentials (neeeds to be removed when uploading to server)
 const config = {
     user: 'GGxMAU.DEV.132',
     password: 'xWI301)gh8mc',
@@ -11,6 +12,7 @@ const config = {
     }
 };
 
+// Connecting to database making it possible to call the database from other classes
 const poolPromise = new sql.ConnectionPool(config)
     .connect()
     .then(pool => {
@@ -22,6 +24,7 @@ const poolPromise = new sql.ConnectionPool(config)
         process.exit(1);
     });
 
+// Exports the poolPromise for use of other classes
 module.exports = {
     sql,
     poolPromise,
