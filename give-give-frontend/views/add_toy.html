@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Add new toy to your inventroy </title>
   <link href="/styles/add_toy.css" rel="stylesheet">
-  <script src="../scripts/camerascripts.js" ></script>
-  <script src="../scripts/uploadscripts.js"></script>
+  
+  <script src="../scripts/add_toy/take_photo.js"></script>
+  
+
 
 </head>
 
@@ -25,6 +27,7 @@
   <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
     <label for="photo-upload"> Upload picture of toy you want to scan: </label>
     <input type="file" id="photo-upload" name="photo" accept="image/*">
+    <script src="../scripts/add_toy/preview_send.js"></script>
   </form>
 </div>
 
