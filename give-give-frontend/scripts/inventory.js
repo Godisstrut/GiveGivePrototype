@@ -54,7 +54,7 @@ fetch('http://localhost:3000/api/getInventory?id=1')
         data.forEach(toy => {
             const toyElement = document.importNode(toyTemplate, true);
 
-            toyElement.querySelector(".toy-image").src = toy.image || '/resources/img/default_img.jpg';
+            toyElement.querySelector(".toy-image").src = toy.ImageURL || '/resources/img/default_img.jpg';
             toyElement.querySelector(".toy-title").textContent = toy.title;
             toyElement.querySelector(".toy-times-traded").textContent = `Times Traded: ${toy.TimesTraded}`;
 

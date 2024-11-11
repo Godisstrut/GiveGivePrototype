@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GiveGive</title>
     <link href="/styles/inventory.css" rel="stylesheet">
+   
     <script src="/scripts/inventory.js" ></script>
 </head>
 <body>
     
     <!-- Hela webbsidan-container  -->
-    <div id="container">
+    
 
         
         <header>
@@ -23,7 +24,7 @@
             </nav>
         </header>
         
-        
+    <div id="container">
         <!--  Profil för användare med basic info om användare och användadet-->
         <div id="profile-div">
             <h2>Profile</h2>
@@ -46,8 +47,8 @@
                     <!-- En mall för leksaksobjektet - kopplas till JS: Kommer presentera: IMG, titel times traded,  || om tid finns 2 button för remove - och redigera -->
                 <template id="toy-template">
                     <div class="toy-in-inventory">
-                        <img src="" alt="Toy Image" class="toy-image">
-                        <h3 class="toy-title">Toy Title</h3>
+                        <img class="toy-image"src="" alt="Toy Image" class="toy-image">
+                        <h3 class="toy-title">Toy Title: </h3>
                         <p class="toy-times-traded">Times Traded: 0</p>
                         <button class="edit-button">Edit</button> 
                         <button class="remove-button">Remove</button>
@@ -57,15 +58,18 @@
 
 
 
-                <!--  Knapp för att lägga till toy -> leder användaren till add_toy/upload_or_capture.html -->
-            <div id="add-toy">
-                <a href="/views/add_toy/upload_or_capture.html"> 
-                <button > Add New Toy to Inventory </button>
-                </a>
-            </div>
+            
 
 
         </div>
+
+            <!--  Knapp för att lägga till toy -> leder användaren till add_toy/upload_or_capture.html -->
+        
+    </div>
+    <div id="add-toy">
+        <a href="/views/add_toy/upload_or_capture.html"> 
+        <button > Add New Toy to Inventory </button>
+        </a>
     </div>
 </body>
 </html>
