@@ -2,11 +2,21 @@
     box-sizing: border-box;
 }
 
+
+@font-face {
+    font-family: 'game-boy';
+    src: url("../resources/Fonts/Early\ GameBoy.ttf") format('truetype');
+}
+
+::placeholder {
+    font-family: 'game-boy';
+}
+
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'game-boy';
     background-color: #F6F5AE;
     box-sizing: border-box;
-    background: url(/images/toys_background.jpg) no-repeat center center; 
+    background: url(../resources/img/toys_background.jpg) no-repeat center center; 
     background-size: cover;
     height: 100vh;
 }
