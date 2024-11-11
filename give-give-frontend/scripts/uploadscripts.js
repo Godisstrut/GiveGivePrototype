@@ -15,27 +15,40 @@ photoUpload.addEventListener("change", function(event) {
 });
 
 // Button to send the image data to the API
-sendButton.addEventListener('click', () => {
-  const imageData = previewImg.src;
+sendButton.addEventListener('click', async () => {
+  const file = photoUpload.files[0];
 
-  if (imageData) {
-    fetch('http://localhost:3000/api/postImageForAI', { // Corrected syntax for fetch
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json', 
-      }, 
-      body: JSON.stringify({ image: imageData, childId: 1 })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Image successfully sent:', data);
-      alert('Image sent successfully!');
-    })
-    .catch(error => {
-      console.error('Error sending image:', error);
-      alert('Failed to send image.');
-    });
-  } else {
+  if (!file) {
     alert('No image to send. Please upload or capture an image first.');
+    return;
   }
+
+  // Convert image file to Base64 string
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = async () => {
+    const base64Image = reader.result;
+  
+
+    // Send the Base64 string along with childId in JSON
+    const response = await fetch('http://localhost:3000/api/postImageForAi', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        image: base64Image,
+        childId: 1,
+      }),
+    });
+
+    const data = await response.json();
+    console.log('Image successfully sent:', data);
+    alert('Image sent successfully!');
+  };
+
+  reader.onerror = (error) => {
+    console.error('Error reading file:', error);
+    alert('Failed to read image file.');
+  };
 });

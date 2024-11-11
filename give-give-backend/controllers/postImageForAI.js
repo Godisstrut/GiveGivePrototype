@@ -6,21 +6,19 @@ exports.postImageForAI = async (req, res) => {
         
         // Extract image and childId from the request body
         const { childId } = req.body;
-        const imageFile = req.file;
-
-        console.log(childId);
-        console.log(imageFile);
+        const image = req.file;
 
         // Validate required fields
-        if (!imageFile || !childId) {
-            return res.status(400).json({ message: 'Image and childId are required.', imageFile: imageFile, childId: childId });
+        if (!image || !childId) {
+            return res.status(400).json({ message: "File or childId missing"});
         }
 
         // Access the image buffer for further processing (e.g., saving to storage or database)
-        const imageBuffer = imageFile.buffer;
+        const imageBuffer = image.buffer;
+        
 
         // Call the service to upload and create the toy
-        const success = await uploadPixelatedImage(imageBuffer, childId);
+        const success = await uploadPixelatedImage(image, childId);
 
         /* TODO
             Upload images to database, (cutout image, original image)
