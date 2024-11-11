@@ -2,16 +2,32 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-const { getAllParents, createParent } = require('./controllers/test');
+const cors = require('cors');
+const { uploadAndAnalyzeImage } = require ('./test/gemini')
+
+// Import routes
+const imageRoutes = require('./routes/imageRoutes');
+const loginRoutes = require('./routes/loginRoutes');
+const getInventoryRoutes = require('./routes/getInventoryRoutes');
+const getProfileRoutes = require('./routes/getProfileRoutes');
+const postImageForAIRoutes = require('./routes/postImageForAIRoutes');
+
 
 // Middleware to parse JSON request bodies
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API requests
-app.get('/api/getAllParents', getAllParents);    // GET request to fetch all users
-app.post('/api/createParent', createParent);    // POST request to create a new user
+//Routes
+app.use("/api/toy-identification", imageRoutes);
+app.use('/api/login', loginRoutes);
+app.use('/api/getInventory', getInventoryRoutes);
+app.use('/api/getProfile', getProfileRoutes);
+app.use('/api/postImageForAi', postImageForAIRoutes)
 
+// API requests
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
+
+

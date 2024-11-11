@@ -3,6 +3,8 @@ const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 const scattaFotoButton = document.getElementById('TakePic');
+const previewImg = document.getElementById('preview-img');
+
 
 // Request Camera Access
 navigator.mediaDevices.getUserMedia({ video: true })
@@ -16,4 +18,8 @@ navigator.mediaDevices.getUserMedia({ video: true })
 // Capture the image from the video and display it on the canvas.
 scattaFotoButton.addEventListener('click', () => {
 context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+
 });
+
+
