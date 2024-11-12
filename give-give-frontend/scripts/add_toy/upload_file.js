@@ -28,7 +28,7 @@ sendButton.addEventListener('click', () => {
   // Create a FormData object
   const formData = new FormData();
   formData.append('image', file);
-  formData.append('childId', 1);
+  formData.append('childId', localStorage.getItem('userId'));
 
   if (imageData) {
     fetch('http://localhost:3000/api/postImageForAi', { // Corrected syntax for fetch
