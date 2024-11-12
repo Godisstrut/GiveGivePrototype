@@ -1,4 +1,5 @@
 const { uploadPixelatedImage } = require('../services/internal/uploadImage');
+const { uploadAndAnalyzeImage } = require('../services/external/geminiService')
 
 // POST request to upload an image and process it
 exports.postImageForAI = async (req, res) => {
@@ -8,9 +9,6 @@ exports.postImageForAI = async (req, res) => {
         const { childId } = req.body;
         const imageFile = req.file;
 
-        console.log(childId);
-        console.log(imageFile);
-
         // Validate required fields
         if (!imageFile || !childId) {
             return res.status(400).json({ message: 'Image and childId are required.', imageFile: imageFile, childId: childId });
@@ -19,8 +17,8 @@ exports.postImageForAI = async (req, res) => {
         // Access the image buffer for further processing (e.g., saving to storage or database)
         const imageBuffer = imageFile.buffer;
 
-        // Call the service to upload and create the toy
-        const success = await uploadPixelatedImage(imageBuffer, childId);
+        const imageAnalysisResult = await uploadAndAnalyzeImage(imageBuffer, "Toy Image");;
+        console.log(imageAnalysisResult);
 
         /* TODO
             Upload images to database, (cutout image, original image)
@@ -29,6 +27,11 @@ exports.postImageForAI = async (req, res) => {
 
             if successfull return 
         */
+
+        // Call the service to upload and create the toy
+        const success = await uploadPixelatedImage(imageBuffer, childId);
+
+        
 
         // Check if the upload was successful and respond
         if (success) {

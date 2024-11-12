@@ -1,10 +1,12 @@
 const { GoogleAIFileManager, GoogleGenerativeAI } = require("@google/generative-ai");
 const config = require("../../config/dotenvConfig");
 
-async function uploadAndAnalyzeImage(imagePath, displayName = "Uploaded Image") {
+async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image") {
   try {
     const fileManager = new GoogleAIFileManager(config.GEMINI_KEY);
-    const uploadResult = await fileManager.uploadFile(imagePath, {
+
+    // Upload the image from buffer instead of path
+    const uploadResult = await fileManager.uploadFile(imageBuffer, {
       mimeType: "image/jpeg",
       displayName: displayName,
     });
