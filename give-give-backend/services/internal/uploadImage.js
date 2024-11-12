@@ -4,7 +4,7 @@ const { uploadImageToBlob } = require('../../config/blobStorageConfig')
 exports.uploadPixelatedImage = async(image, id) => {
     try{
         // Uploads the image to the blob database and saves the url to create a reference to a toy
-        const url = uploadImageToBlob(image, "pixelimages");
+        const url = await uploadImageToBlob(image, "pixelimages");
         console.log(url);
 
         //Error handling for if URL is empty

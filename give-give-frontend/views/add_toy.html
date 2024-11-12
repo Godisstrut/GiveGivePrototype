@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Add new toy to your inventroy </title>
+  <link href="/styles/add_toy.css" rel="stylesheet">
+  
+  <script src="../scripts/add_toy/take_photo.js"></script>
+  
+
+
+</head>
+
+<body>
+
+  <nav class="nav-bar">
+    <ul>
+        <li><a href = "#inventory"> Inventory </a></li>
+        <li><a href = "#profile"> Profile </a></li>
+    </ul>
+</nav>
+
+
+  <!-- Möjlighet för användare att kunna ladda upp bild från lokal enhet  -->
+<div id="upload-photo">
+  <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="photo-upload"> Upload picture of toy you want to scan: </label>
+    <input type="file" id="photo-upload" name="photo" accept="image/*">
+    <script src="../scripts/add_toy/preview_send.js"></script>
+  </form>
+</div>
+
+
+<!--  Kamerafunktionen för att kunna ta en bild direkt på sidan -->
+ <div id="camera">
+    <h1>Camera Access and Photo Capture</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="TakePic">Take Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <script src="../scripts/camerascripts.js"></script>
+  </div> 
+
+<!-- förhandsgranskning av vald/tagen bild-->
+  <div id="preview-of-pic">
+      <h2> Preview of selected image</h2>
+      <img id="preview-img" src="" alt="preview will apperar here" width="300">
+  </div>
+
+
+  <!-- Knapp för att skicka img till API  -   koppla både cam och upload till denna  -->
+  <div id="send-IMG">
+    <button id="send-img-to-api"> Send <img></button>
+  </div>
+
+
+
+  </body>
+</html>

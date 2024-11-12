@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiveGive</title>
+    <link href="../styles/inventory.css" rel="stylesheet">
+   
+    <script src="../scripts/inventory.js" ></script>
+</head>
+<body>
+    
+    <!-- Hela webbsidan-container  -->
+    
+
+        
+        <header>
+            <h1> Welcome to GiveGive </h1>
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="/views/startpage.html"> Startpage </a></li>
+                    <li><a href="/views/upload_or_capture.html"> Add new toy to inventory </a></li>
+                </ul>
+            </nav>
+        </header>
+        
+    <div id="container">
+        <!--  Profil för användare med basic info om användare och användadet-->
+        <div id="profile-div">
+            <h2>Profile</h2>
+            <p id="name">Name: </p>
+            <p id="parent-name">Parent name: </p>
+        
+            <h3>Toys</h3>
+            <p id="toys-traded">Toys traded: </p>
+            <p id="toys-in-inventory">Toys in inventory: </p>
+        </div>
+
+
+        <!--  Container för inventory -->
+        <div id="inventory-div">
+            
+            <h2>Inventory</h2> 
+                
+                <!-- Container för alla leksaker -->
+            <div id="inventory-container">
+                    <!-- En mall för leksaksobjektet - kopplas till JS: Kommer presentera: IMG, titel times traded,  || om tid finns 2 button för remove - och redigera -->
+                <template id="toy-template">
+                    <div class="toy-in-inventory">
+                        <img class="toy-image"src="" alt="Toy Image" class="toy-image">
+                        <h3 class="toy-title">Toy Title: </h3>
+                        <p class="toy-times-traded">Times Traded: 0</p>
+                        <button class="edit-button">Edit</button> 
+                        <button class="remove-button">Remove</button>
+                    </div>
+                </template>
+            </div>
+
+
+
+            
+
+
+        </div>
+
+            <!--  Knapp för att lägga till toy -> leder användaren till add_toy/upload_or_capture.html -->
+        
+    </div>
+    <div id="add-toy">
+        <a href="/views/add_toy/upload_or_capture.html"> 
+        <button > Add New Toy to Inventory </button>
+        </a>
+    </div>
+</body>
+</html>
