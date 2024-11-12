@@ -21,22 +21,21 @@ exports.postImageForAI = async (req, res) => {
         const imageAnalysisResult = await uploadAndAnalyzeImage(imageBuffer, "Toy Image");;
         console.log(imageAnalysisResult);
 
-        /* TODO
-            Upload images to database, (cutout image, original image)
-
-            Run Gemini to and update the table in the database on the information gathered
-
-            if successfull return 
-        */
 
         // Call the service to upload and create the toy
-        const success = await uploadPixelatedImage(imageBuffer, childId);
+        const toyId = await uploadPixelatedImage(imageBuffer, childId);
 
         
 
         // Check if the upload was successful and respond
-        if (success) {
-            return res.status(200).json({ message: 'Toy created with uploaded image successfully.' });
+        if (toyId != null) {
+            
+            const response = {
+                toyId:toyId,
+                formData: imageAnalysisResult
+            }
+            
+            return res.status(200).json({ response });
         } else {
             return res.status(500).json({ message: 'Failed to create toy or upload image.' });
         }

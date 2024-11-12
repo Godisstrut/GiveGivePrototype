@@ -21,12 +21,12 @@ exports.uploadPixelatedImage = async(image, id) => {
         // If no toy is returned the procedure failed and will return a false
         if(result.recordset.length === 0){
             console.error("failed creating toy item")
-            return false;
+            return null;
         } 
 
         // If a toy is present in the return then it is successfully created and will return true
         else{
-            return true;
+            return result.recordset[0].Id;
         }
         
     }

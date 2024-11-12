@@ -1,12 +1,18 @@
-const { GoogleAIFileManager, GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleAIFileManager } = require("@google/generative-ai/server");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const config = require("../../config/dotenvConfig");
+const fs = require("fs").promises;
+const path = require("path");
 
 async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image") {
-  try {
-    const fileManager = new GoogleAIFileManager(config.GEMINI_KEY);
+  const tempFilePath = path.join(__dirname, "tempImage.jpg");
 
-    // Upload the image from buffer instead of path
-    const uploadResult = await fileManager.uploadFile(imageBuffer, {
+  try {
+    // Save buffer to a temporary file
+    await fs.writeFile(tempFilePath, imageBuffer);
+
+    const fileManager = new GoogleAIFileManager(config.GEMINI_KEY);
+    const uploadResult = await fileManager.uploadFile(tempFilePath, {
       mimeType: "image/jpeg",
       displayName: displayName,
     });
@@ -25,12 +31,37 @@ async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image"
       },
     ]);
 
-    return result.response.text();
+    const parsedResponse = parseResponseToJSON(result.response.text());
+    return parsedResponse;
 
   } catch (error) {
     console.error("Error during upload or analysis:", error);
     throw error;
+  } finally {
+    // Clean up the temporary file
+    await fs.unlink(tempFilePath);
   }
 }
 
 module.exports = { uploadAndAnalyzeImage };
+
+const parseResponseToJSON = (text) => {
+  // Split by newlines to process each line individually
+  const lines = text.split('\n');
+  const jsonResult = {};
+
+  // Regular expressions to match each field
+  lines.forEach((line) => {
+    if (/^Title:/.test(line)) {
+      jsonResult.title = line.replace("Title:", "").trim();
+    } else if (/^Tags:/.test(line)) {
+      jsonResult.tags = line.replace("Tags:", "").trim().split(", ");
+    } else if (/^Age recommendation:/.test(line)) {
+      jsonResult.ageRecommendation = line.replace("Age recommendation:", "").trim();
+    } else if (/^Price recommendation:/.test(line)) {
+      jsonResult.priceRecommendation = line.replace("Price recommendation:", "").trim();
+    }
+  });
+
+  return jsonResult;
+};
