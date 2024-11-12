@@ -5,7 +5,7 @@ const profile = document.getElementById('profile');
 
 //***Data fetch for Profile in inventory***
 
-fetch('http://localhost:3000/api/getProfile?id=1')
+fetch(`http://localhost:3000/api/getProfile?id=${localStorage.getItem('userId')}`)
     .then(Response => {
         if (!Response.ok) {
             throw new Error('Network response was not ok');
@@ -33,7 +33,7 @@ fetch('http://localhost:3000/api/getProfile?id=1')
 
 
 //***Datafetch for Inventory-list***
-fetch('http://localhost:3000/api/getInventory?id=1')
+fetch(`http://localhost:3000/api/getInventory?id=${localStorage.getItem('userId')}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network not workie')
@@ -66,7 +66,7 @@ fetch('http://localhost:3000/api/getInventory?id=1')
 })
 
     .catch(error => {
-        console.error('There was a problem with fetshy op for toy-data in inventory')
+        console.error('There was a problem with fetching op for toy-data in inventory')
 
 
 });
