@@ -27,12 +27,12 @@ async function uploadAndAnalyzeImage(imagePath, displayName = "Uploaded Image") 
     ]);
 
     console.log(result.response.text());
-    return result.response.text();  // Optionally, return the result for further use
+    return result.response.text(); 
 
   } catch (error) {
     console.error("Error during upload or analysis:", error);
   }
 }
 
-const mediaPath = '../test-images/test-toy-2.webp';
+const mediaPath = '../test-images/test-toy-5.jpg';
 uploadAndAnalyzeImage(mediaPath, "test-toy");

@@ -1,7 +1,7 @@
 const { poolPromise } = require('../../config/dbConfig')
 const { uploadImageToBlob } = require('../../config/blobStorageConfig')
 
-exports.uploadPixelatedImage = async(image, id) => {
+exports.uploadPixelatedImage = async(image, id, Title, Tags, Age_recommendation, Price_recommendation) => {
     try{
         // Uploads the image to the blob database and saves the url to create a reference to a toy
         const url = await uploadImageToBlob(image, "pixelimages");
@@ -16,7 +16,11 @@ exports.uploadPixelatedImage = async(image, id) => {
         const result = await pool.request()
             .input('Id', id)
             .input("ImageUrl", url)
-            .query("EXEC [dbo].[CreateToyWithImageURL] @ChildId = @Id, @ImageURL = @ImageUrl");
+            .input("Name", Title)
+            .input("Tags", Tags)
+            .input("Age_range", Age_recommendation)
+            .input("Price_range", Price_recommendation)
+            .query("EXEC [dbo].[InsertInitialToyWithImageURL] @ChildId = @Id, @ImageURL = @ImageUrl, @Name = @Name, @Tags = @Tags, @Age_range = @Age range, @Price_range = @Price_range");
 
         // If no toy is returned the procedure failed and will return a false
         if(result.recordset.length === 0){

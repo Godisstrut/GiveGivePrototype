@@ -2,7 +2,7 @@ const { BlobServiceClient } = require('@azure/storage-blob');
 
 // Azure Blob Storage configuration
 
-const AZURE_STORAGE_CONNECTION_STRING = 'insert key here';
+const AZURE_STORAGE_CONNECTION_STRING = 'Enter key here';
 
 // Initialize the BlobServiceClient
 const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);

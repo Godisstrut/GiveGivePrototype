@@ -11,7 +11,7 @@ async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image"
     // Save buffer to a temporary file
     await fs.writeFile(tempFilePath, imageBuffer);
 
-    const fileManager = new GoogleAIFileManager(config.GEMINI_KEY);
+    const fileManager = new GoogleAIFileManager('Enter key here');
     const uploadResult = await fileManager.uploadFile(tempFilePath, {
       mimeType: "image/jpeg",
       displayName: displayName,
@@ -19,10 +19,10 @@ async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image"
 
     console.log(`Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`);
 
-    const genAI = new GoogleGenerativeAI(config.GEMINI_KEY);
+    const genAI = new GoogleGenerativeAI('Enter key here');
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent([
-      "Identify the toy in this image. Fill in this information. If you are unsure, leave it out: Title, Tags (can be brand or category), age recommendation, price recommendation.",
+      "Identify the toy in this image and fill in this information: Title, Tags (can be brand or category), age recommendation, price recommendation. If it is not a toy or suitable for a person under the age of 18 respond with 'Inappropiate content'",
       {
         fileData: {
           fileUri: uploadResult.file.uri,
