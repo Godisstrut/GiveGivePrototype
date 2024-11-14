@@ -24,7 +24,7 @@ async function uploadImageToBlob(file, containerName) {
             throw new Error(`Container "${containerName}" does not exist.`);
         }
 
-        const blobName = file.generateUniqueFileName(200); 
+        const blobName = generateUniqueFileName(200); 
         const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
         // Upload file to Azure Blob Storage
