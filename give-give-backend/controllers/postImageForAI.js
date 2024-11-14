@@ -21,10 +21,12 @@ exports.postImageForAI = async (req, res) => {
         const imageAnalysisResult = await uploadAndAnalyzeImage(imageBuffer, "Toy Image");;
         console.log(imageAnalysisResult);
 
-        const Title = imageAnalysisResult.title;
-        const Tags = imageAnalysisResult.tags.join(',');
-        const Age_recommendation = imageAnalysisResult.ageRecommendation;
-        const Price_recommendation = imageAnalysisResult.priceRecommendation;
+        // Testing data
+        // const imageAnalysisResult = require('../json-test/toy.json');        
+        // const Title = imageAnalysisResult.title;
+        // const Tags = imageAnalysisResult.tags.join(',');
+        // const Age_recommendation = imageAnalysisResult.ageRecommendation;
+        // const Price_recommendation = imageAnalysisResult.priceRecommendation;
 
         // Call the service to upload and create the toy
         const toyId = await uploadPixelatedImage(imageBuffer, childId, Title, Tags, Age_recommendation, Price_recommendation);

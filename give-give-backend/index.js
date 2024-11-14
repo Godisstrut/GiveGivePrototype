@@ -22,6 +22,7 @@ app.use('/api/login', loginRoutes);
 app.use('/api/getInventory', getInventoryRoutes);
 app.use('/api/getProfile', getProfileRoutes);
 app.use('/api/postImageForAi', postImageForAIRoutes)
+app.use('/api/postToyForm', postImageForAIRoutes)
 
 // API requests
 app.listen(port, () => {
