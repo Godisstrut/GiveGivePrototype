@@ -49,7 +49,7 @@ async function login() {
         console.log(userId)
         console.log(localStorage.getItem('userId'))
         
-        window.location.href = 'http://127.0.0.1:5500/give-give-frontend/views/inventory.html';
+        window.location.href = '../views/inventory.html';
         
     } catch (error) {
         console.error("Error:", error.message);

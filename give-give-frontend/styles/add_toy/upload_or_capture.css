@@ -4,10 +4,15 @@
     src: url("../../resources/Fonts/Early\ GameBoy.ttf") format('truetype');
 }
 
+@font-face {
+    font-family: 'gg-font';
+    src: url("../../resources/Fonts/NeueBit-Bold.otf") format('opentype');
+}
+
 body {
     font-family: 'game-boy';
     background-color: honeydew;
-    background-image: url("/resources/img/gradient_without_point.png"); /* Adjust if the path differs */
+    background-image: url("../../resources/img/gradient_without_point.png"); /* Adjust if the path differs */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -79,11 +84,11 @@ header {
 
 /* Specific styling for each button section */
 #upload-file-button {
-    background-image: url("/resources/img/Flower_Gradient.png");
+    background-image: url("../../resources/img/Flower_Gradient_2.png");
 }
 
 #take_photo-button {
-    background-image: url("/resources/img/Flower_Gradient_2.png");
+    background-image: url("../../resources/img/Flower_Gradient_2.png");
 }
 
 /* Buttons */
