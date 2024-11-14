@@ -1,9 +1,10 @@
 const sql = require('mssql');
+const { secrets } = require('./secretsConfig');
 
 // Database configuration credentials (neeeds to be removed when uploading to server)
 const config = {
-    user: 'GGxMAU.DEV.132',
-    password: 'xWI301)gh8mc',
+    user: secrets.dbUserName,
+    password: secrets.dbPassword,
     server: 'sqlgivegive.database.windows.net', 
     database: 'GiveGiveDatabase',
     options: {
