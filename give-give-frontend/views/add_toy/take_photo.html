@@ -3,50 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Add new toy to your inventroy </title>
+  <title>Add new toy to your inventory</title>
   <link href="../../styles/add_toy/take_photo.css" rel="stylesheet">
-  
-  <script src="../../scripts/add_toy/take_photo.js"></script>
-  <script src="../../scripts/add_toy/upload_file.js"></script>
-  
-
-
 </head>
 
 <body>
-
-  <header>
-    <h1> Welcome to GiveGive </h1>
-    <nav class="nav-bar">
-        <ul>
-          <li><a href="../../views/inventory.html"> Go back to inventory </a></li>
-          <li><a href="../../views/login.html"> Change profile </a></li>
-        </ul>
-
-    </nav>
-</header>
-
-
-
-
-<!--  Kamerafunktionen för att kunna ta en bild direkt på sidan -->
- <div id="camera">
+    <header>
+      <h1> Welcome to GiveGive </h1>
+      <nav class="nav-bar">
+          <ul>
+              <li><a href="../login.html"> Change profile </a></li>
+              <li><a href="upload_or_capture.html"> Add new toy to inventory </a></li>
+          </ul>
+      </nav>
+    </header>
+  <!-- Camera Functionality -->
+  <div id="camera">
     <h1>Camera Access and Photo Capture</h1>
     <video id="video" width="640" height="480" autoplay></video>
     <button id="TakePic">Take Photo</button>
     <canvas id="canvas" width="640" height="480"></canvas>
-    <script src="../../scripts/add_toy/take_photo.js"></script>
+    <div id="send-IMG">
+      <button id="send-img-to-api">Send Image</button>
+    </div>
   </div> 
 
+  <script src="../../scripts/add_toy/take_photo.js"></script>
+  <script src="../../scripts/add_toy/upload_file.js"></script>
 
-
-
-  <!-- Knapp för att skicka img till API  -   koppla både cam och upload till denna  -->
-  <div id="send-IMG">
-    <button id="send-img-to-api"> Send <img></button>
-  </div>
-
-
-
-  </body>
+</body>
 </html>

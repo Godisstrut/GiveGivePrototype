@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'game-boy';
+    src: url("../../resources/Fonts/Early\ GameBoy.ttf") format('truetype');
+}
+ 
+ 
+ body{
+    font-family:'game-boy';
+    background-color: honeydew;
+    background-image:url("../../resources/img/gradient_without_point.png") ;
+    background-size: auto;
+
+    
+
+ }
+
+ h1{
+    color: purple;
+
+ }
+
+ h2{
+    font-family:'game-boy';
+ }
+
+ 
+ /* Container for all components in inventory*/
+ #container {
+    display: flex;
+    grid-template-columns: 1fr 1fr; /* Två kolumner, lika stora */
+    grid-template-rows: auto 1fr;
+
+    grid-template-areas: 
+        "firstblock firstblock"
+        "secondblock thirdblock";
+}
+
+/* Grid firstblock */
+
+header{
+    grid-area:firstblock;
+    background-color:#f3f2ef;
+    text-align: center;
+    margin-bottom: 5px;
+    
+}
+
+
+#nav-bar{
+    grid-area: firstblock;
+    background-color:#f3f2ef;
+    text-align: left;
+    margin-bottom: 10px;
+    display:flex;
+    justify-content: center;
+
+    
+}
+.nav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    background-size: cover;
+    color: white;
+    font-family: 'game-boy';
+    background-image: url("../../resources/img/Flower_Gradient_2.png");
+}
+
+#send-IMG {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+  }
+#camera {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
+    box-sizing: border-box;
+    padding: 20px; 
+  }
+  
+
+#video {
+    border: 5px solid #007BFF;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin-bottom: 20px; 
+  }
+#canvas {
+    border: 5px solid #007BFF; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin-top: 20px; 
+  } 
