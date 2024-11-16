@@ -33,6 +33,13 @@ async function uploadAndAnalyzeImage(imagePath, displayName = "Uploaded Image") 
     console.error("Error during upload or analysis:", error);
   }
 }
+/*
+Path kan orsaka problem. Överväg denna lösning.
+const path = require('path');
+
+const mediaPath = path.resolve(__dirname, '../test-images/test-toy-2.webp');
+uploadAndAnalyzeImage(mediaPath, "test-toy");
+*/
 
 const mediaPath = '../test-images/test-toy-2.webp';
 uploadAndAnalyzeImage(mediaPath, "test-toy");
