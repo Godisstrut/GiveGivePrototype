@@ -27,7 +27,7 @@
  /* Container for all components in inventory*/
  #container {
     display: flex;
-    grid-template-columns: 1fr 1fr; /* Två kolumner, lika stora */
+    grid-template-columns: 1fr 1fr; 
     grid-template-rows: auto 1fr;
 
     grid-template-areas: 
@@ -78,26 +78,56 @@ button{
     align-items: center; 
     height: 100%; 
   }
+/* Responsive styles for the camera container */
 #camera {
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    height: 100vh; 
-    box-sizing: border-box;
     padding: 20px; 
-  }
-  
+    box-sizing: border-box;
+    height: auto; /* Adjust height dynamically */
+}
 
-#video {
-    border: 5px solid #007BFF;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    margin-bottom: 20px; 
-  }
+/* Smaller video and canvas with consistent aspect ratio */
+#video,
 #canvas {
-    border: 5px solid #007BFF; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    margin-top: 20px; 
-  } 
+    width: 100%; 
+    max-width: 360px; 
+    max-height: 270px; 
+    aspect-ratio: 4 / 3; 
+    border: 4px solid #007BFF; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    margin: 10px 0; 
+    object-fit: cover; 
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    #camera {
+        padding: 10px; 
+    }
+
+    #video,
+    #canvas {
+        max-width: 280px; 
+        max-height: 210px; 
+        border: 3px solid #007BFF;
+    }
+}
+
+/* Media query for very small screens (e.g., mobile phones) */
+@media (max-width: 480px) {
+    #video,
+    #canvas {
+        max-width: 200px; 
+        max-height: 150px; 
+        border: 2px solid #007BFF; 
+    }
+
+    button {
+        padding: 8px; 
+        font-size: 14px; 
+    }
+}

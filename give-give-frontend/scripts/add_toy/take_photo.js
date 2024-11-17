@@ -9,7 +9,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
     // Attach the video stream to the video element
     video.srcObject = stream;
-    video.play(); // Play the video
+    video.play(); 
   })
   .catch(error => {
     console.error('Error accessing camera:', error);
@@ -21,7 +21,7 @@ scattaFotoButton.addEventListener('click', () => {
   // Draw the current video frame on the canvas
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
   
-  // Optional: Log a success message
+  
   console.log('Photo captured and displayed on the canvas.');
 });
 
@@ -31,7 +31,7 @@ sendImgButton.addEventListener('click', () => {
   canvas.toBlob(blob => {
     // Create a FormData object and append the Blob
     const formData = new FormData();
-    formData.append('image', blob, 'photo.png'); // Name the file "photo.png"
+    formData.append('image', blob, 'photo.png'); 
     
     // Send the image to the server using fetch
     fetch('http://localhost:3000/api/postImageForAi', {
@@ -51,5 +51,5 @@ sendImgButton.addEventListener('click', () => {
       console.error('Network error:', error);
       alert('A network error occurred.');
     });
-  }, 'image/png'); // Specify the image format
+  }, 'image/png'); 
 });
