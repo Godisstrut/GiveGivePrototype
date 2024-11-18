@@ -1,11 +1,8 @@
 const { BlobServiceClient } = require('@azure/storage-blob');
-
-// Azure Blob Storage configuration
-
-const AZURE_STORAGE_CONNECTION_STRING = 'Enter key here';
+require('dotenv').config();
 
 // Initialize the BlobServiceClient
-const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+const blobServiceClient = BlobServiceClient.fromConnectionString(process.env.AZURE_STORAGE_CONNECTION_STRING);
 
 // Upload function that with a containerName as parameter
 async function uploadImageToBlob(file, containerName) {

@@ -1,6 +1,5 @@
 const { GoogleAIFileManager } = require("@google/generative-ai/server");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const config = require("../../config/dotenvConfig");
+const { GoogleGenerativeAI } = require("@google/generative-ai");;
 const fs = require("fs").promises;
 const path = require("path");
 
@@ -11,7 +10,7 @@ async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image"
     // Save buffer to a temporary file
     await fs.writeFile(tempFilePath, imageBuffer);
 
-    const fileManager = new GoogleAIFileManager('Enter key here');
+    const fileManager = new GoogleAIFileManager(process.env.GEMINI_KEY);
     const uploadResult = await fileManager.uploadFile(tempFilePath, {
       mimeType: "image/jpeg",
       displayName: displayName,
@@ -19,7 +18,7 @@ async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image"
 
     console.log(`Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`);
 
-    const genAI = new GoogleGenerativeAI('Enter key here');
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent([
       "Identify the toy in this image and fill in this information: Title, Tags (can be brand or category), age recommendation, price recommendation. If it is not a toy or suitable for a person under the age of 18 respond with 'Inappropiate content'",

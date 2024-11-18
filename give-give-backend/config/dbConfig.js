@@ -1,11 +1,11 @@
 const sql = require('mssql');
-
+require('dotenv').config();
 // Database configuration credentials (neeeds to be removed when uploading to server)
 const config = {
-    user: 'GGxMAU.DEV.132',
-    password: 'xWI301)gh8mc',
-    server: 'sqlgivegive.database.windows.net', 
-    database: 'GiveGiveDatabase',
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    server: process.env.DATABASE_SERVER, 
+    database: process.env.DATABASE_NAME,
     options: {
         encrypt: true, 
         enableArithAbort: true

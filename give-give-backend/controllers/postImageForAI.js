@@ -22,23 +22,30 @@ exports.postImageForAI = async (req, res) => {
         console.log(imageAnalysisResult);
 
         // Testing data
-        // const imageAnalysisResult = require('../json-test/toy.json');        
-        // const Title = imageAnalysisResult.title;
-        // const Tags = imageAnalysisResult.tags.join(',');
-        // const Age_recommendation = imageAnalysisResult.ageRecommendation;
-        // const Price_recommendation = imageAnalysisResult.priceRecommendation;
+        // const imageAnalysisResult = require('../json-test/toy.json');  
+
+        const Title = imageAnalysisResult.title;
+        const stringifiedTags = imageAnalysisResult.tags.join(',');
+        const Age_recommendation = imageAnalysisResult.ageRecommendation;
+        const Price_recommendation = imageAnalysisResult.priceRecommendation;
 
         // Call the service to upload and create the toy
-        const toyId = await uploadPixelatedImage(imageBuffer, childId, Title, Tags, Age_recommendation, Price_recommendation);
+        const toyId = await uploadPixelatedImage(imageBuffer, childId, Title, stringifiedTags, Age_recommendation, Price_recommendation);
 
-        
+        const Tags = imageAnalysisResult.tags
+
+        const formData = [
+            toyId,
+            Title, 
+            Tags,
+        ]
 
         // Check if the upload was successful and respond
         if (toyId != null) {
             
             const response = {
                 toyId:toyId,
-                formData: imageAnalysisResult
+                formData: formData
             }
             
             return res.status(200).json({ response });
