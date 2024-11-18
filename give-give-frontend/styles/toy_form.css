@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'game-boy';
+    src: url("../resources/Fonts/Early\ GameBoy.ttf") format('truetype');
+}
+
+
+body {
+    font-family:'game-boy';
+    background-color: honeydew;
+    background-image:url("../resources/img/gradient_without_point.png") ;
+    background-size: auto;
+}
+
 #popup-container {
     display: flex;
     justify-content: center;
