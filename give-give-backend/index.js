@@ -10,6 +10,7 @@ const loginRoutes = require('./routes/loginRoutes');
 const getInventoryRoutes = require('./routes/getInventoryRoutes');
 const getProfileRoutes = require('./routes/getProfileRoutes');
 const postImageForAIRoutes = require('./routes/postImageForAIRoutes');
+const postToyFormRoutes = require('./routes/postToyFormRoutes');
 
 
 // Middleware to parse JSON request bodies
@@ -22,7 +23,7 @@ app.use('/api/login', loginRoutes);
 app.use('/api/getInventory', getInventoryRoutes);
 app.use('/api/getProfile', getProfileRoutes);
 app.use('/api/postImageForAi', postImageForAIRoutes)
-app.use('/api/postToyForm', postImageForAIRoutes)
+app.use('/api/postToyForm', postToyFormRoutes)
 
 // API requests
 app.listen(port, () => {
