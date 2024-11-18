@@ -1,4 +1,5 @@
 const { uploadPixelatedImage } = require('../services/internal/uploadImage');
+const { uploadAndAnalyzeImage } = require('../services/external/geminiService')
 
 // POST request to upload an image and process it
 exports.postImageForAI = async (req, res) => {
@@ -17,20 +18,37 @@ exports.postImageForAI = async (req, res) => {
         const imageBuffer = image.buffer;
         
 
+        const imageAnalysisResult = await uploadAndAnalyzeImage(imageBuffer, "Toy Image");;
+        console.log(imageAnalysisResult);
+
+        // Testing data
+        // const imageAnalysisResult = require('../json-test/toy.json');  
+
+        const Title = imageAnalysisResult.title;
+        const stringifiedTags = imageAnalysisResult.tags.join(',');
+        const Age_recommendation = imageAnalysisResult.ageRecommendation;
+        const Price_recommendation = imageAnalysisResult.priceRecommendation;
+
         // Call the service to upload and create the toy
-        const success = await uploadPixelatedImage(image, childId);
+        const toyId = await uploadPixelatedImage(imageBuffer, childId, Title, stringifiedTags, Age_recommendation, Price_recommendation);
 
-        /* TODO
-            Upload images to database, (cutout image, original image)
+        const Tags = imageAnalysisResult.tags
 
-            Run Gemini to and update the table in the database on the information gathered
-
-            if successfull return 
-        */
+        const formData = [
+            toyId,
+            Title, 
+            Tags,
+        ]
 
         // Check if the upload was successful and respond
-        if (success) {
-            return res.status(200).json({ message: 'Toy created with uploaded image successfully.' });
+        if (toyId != null) {
+            
+            const response = {
+                toyId:toyId,
+                formData: formData
+            }
+            
+            return res.status(200).json({ response });
         } else {
             return res.status(500).json({ message: 'Failed to create toy or upload image.' });
         }
