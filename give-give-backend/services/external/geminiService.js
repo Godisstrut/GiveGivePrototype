@@ -21,7 +21,7 @@ async function uploadAndAnalyzeImage(imageBuffer, displayName = "Uploaded Image"
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
     const result = await model.generateContent([
-      "Identify the toy in this image and fill in this information: Title, Tags (can be brand or category), age recommendation, price recommendation. If it is not a toy or suitable for a person under the age of 18 respond with 'Inappropiate content'",
+      "Identify the toy in this image and answer the following questions, if you are unsure just return an empty string: Title, Tags (can be brand or category), Age recommendation (Only estimation), Price recommendation (format as 3-15($). If it is not a toy or suitable for a person under the age of 18 respond with 'Inappropiate content'",
       {
         fileData: {
           fileUri: uploadResult.file.uri,

@@ -41,11 +41,11 @@ exports.postImageForAI = async (req, res) => {
 
         // Check if the upload was successful and respond
         if (toyId != null) {
-            
             const response = {
                 toyId: toyId,
                 formData: formData
             }
+           
             
             return res.status(200).json({ response });
         } else {
