@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Form successfully submitted:", result);
                 alert("Toy information saved successfully!");
                 toyForm.reset(); // Reset the form
-                window.location.href = `../inventory.html`;
+                window.location.href = `inventory.html`;
             } else {
                 const error = await response.json();
                 console.error("Error from backend:", error);
