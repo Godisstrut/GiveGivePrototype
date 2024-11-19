@@ -32,15 +32,36 @@ body {
 }
 
 #login-form {
-    background-color: #CE8147;
+    background-image: url('../resources/img/logogg.PNG');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     width: 100%;
     max-width: 30rem;
-    color: #fff;
+    height: auto; 
+    padding: 2rem; 
     border-radius: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:#de85b7; 
+}
+
+#login-form , h2 {
+    padding-top: 0%;
+}
+
+.input-box, input {
+    background-color: #333333;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 30rem;
+
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color:#77c375;
     font-size: 1rem;
     padding-left: 2px;
 }
@@ -59,7 +80,6 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid #cecece;
     border-radius: 20px;
     font-weight: 600;
     color: #fff;
@@ -68,7 +88,6 @@ body {
 
 /* turns the login field grey when typing email or paswword*/
 .input-box input:focus {
-    border: 2px solid #50514F;
     transition: all 0.3s ease-in;
 }
 
@@ -96,7 +115,7 @@ body {
     cursor: pointer;
     font-weight: 530;
     font-size: 1.2rem;
-    background-color: #FFCC00;
+    background-color: #de85b7;
     color: #333333;
 }
 
