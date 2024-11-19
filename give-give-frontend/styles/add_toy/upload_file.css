@@ -76,7 +76,7 @@ section {
     text-align: center;
 }
 
-#intro h2 {
+h2 {
     font-family: 'game-boy';
     color: #461d87;
     font-size: 1.8em;
@@ -113,6 +113,7 @@ input[type="file"] {
     height: auto;
     border: 1px solid #ddd;
     border-radius: 5px;
+    color: #461d87;
 }
 
 #send-IMG button {
@@ -127,11 +128,7 @@ input[type="file"] {
     
 }
 
-#send-IMG #send-img-to-api button:hover {
-    background-color: #461d87;
-    border-style: inset;
 
-}
 
 #send-IMG #send-img-to-api {
     font-size: 20px;
@@ -145,6 +142,16 @@ input[type="file"] {
 }
 
 
+
+#send-IMG button:hover {
+    
+  
+    background-color: #461d87;
+    border-radius: 0;
+    border-style: outset;
+    border-width: 12px;
+    border-color: #bfb1be;
+  }
 
 #preview-of-pic {
     text-align: center;
@@ -174,6 +181,7 @@ input[type="file"] {
 section #send-IMG{
     border: none;
     width: auto;
+    box-shadow: none;
 }
 
 /* Responsiv design */
