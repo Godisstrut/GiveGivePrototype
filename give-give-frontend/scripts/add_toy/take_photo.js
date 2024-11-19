@@ -27,7 +27,7 @@ scattaFotoButton.addEventListener('click', () => {
 
 // Send the captured image to the server
 sendImgButton.addEventListener('click', () => {
-  const childId = localStorage.getItem('userId'); // Recupera childId da localStorage
+  const childId = localStorage.getItem('userId');
 
   if (!childId) {
     alert("User ID not found. Please log in or refresh the page.");
@@ -42,8 +42,8 @@ sendImgButton.addEventListener('click', () => {
     }
 
     const formData = new FormData();
-    formData.append('image', blob, 'photo.png'); // Nome del campo file deve essere 'image'
-    formData.append('childId', childId); // Aggiunge childId al formData
+    formData.append('image', blob, 'photo.png');
+    formData.append('childId', childId);
 
     fetch('http://localhost:3000/api/postImageForAi', {
       method: 'POST',
@@ -60,7 +60,11 @@ sendImgButton.addEventListener('click', () => {
       .then(data => {
         if (data) {
           console.log("Response from server:", data);
-          alert(`Image uploaded successfully! Toy ID: ${data.response.toyId}`);
+          const toyId = data.response.toyId; // Get the toyId from the server response
+          alert(`Image uploaded successfully! Toy ID: ${toyId}`);
+
+          // Redirect to the new page with toyId in the query string
+          window.location.href = `form_toy.html?toyId=${toyId}`;
         }
       })
       .catch(error => {
