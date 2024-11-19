@@ -34,19 +34,18 @@ exports.postImageForAI = async (req, res) => {
 
         const Tags = imageAnalysisResult.tags
 
-        const formData = [
-            toyId,
-            Title, 
-            Tags,
-        ]
+        const formData = {
+            Title: Title, 
+            Tags: Tags
+        }
 
         // Check if the upload was successful and respond
         if (toyId != null) {
-            
             const response = {
-                toyId:toyId,
+                toyId: toyId,
                 formData: formData
             }
+           
             
             return res.status(200).json({ response });
         } else {
