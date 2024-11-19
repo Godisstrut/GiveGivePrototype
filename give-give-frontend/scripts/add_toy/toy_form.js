@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toyForm = document.getElementById('toy-form');
     const toyIdInput = document.getElementById('toy-id');
     if (toyIdInput) {
-        toyIdInput.value = toyId;
+        toyIdInput.value = toyId; // Set the toyId in the hidden input
     }
 
     // Handle form submission
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
             Name: document.getElementById('name').value.trim(),
             Condition: document.getElementById('condition').value.trim(),
             Material: document.getElementById('material').value.trim(),
-            Tags: document.getElementById('tags').value.trim().split(',') // Split tags by commas
+            Tags: document.getElementById('tags').value.trim().split(',').map(tag => tag.trim()) // Split tags by commas and trim whitespace
         };
 
         // Validate form data
-        if (!formData.Name || !formData.Condition || !formData.Material || formData.Tags.length === 0) {
+        if (!formData.Id || !formData.Name || !formData.Condition || !formData.Material || formData.Tags.length === 0) {
             alert("Please fill in all fields.");
             return;
         }
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Form successfully submitted:", result);
                 alert("Toy information saved successfully!");
                 toyForm.reset(); // Reset the form
+                window.location.href = `../inventory.html`;
             } else {
                 const error = await response.json();
                 console.error("Error from backend:", error);

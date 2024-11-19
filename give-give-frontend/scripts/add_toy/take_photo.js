@@ -27,49 +27,61 @@ scattaFotoButton.addEventListener('click', () => {
 
 // Send the captured image to the server
 sendImgButton.addEventListener('click', () => {
-  const childId = localStorage.getItem('userId');
+    const childId = localStorage.getItem('userId'); // Retrieve childId from localStorage
 
-  if (!childId) {
-    alert("User ID not found. Please log in or refresh the page.");
-    return;
-  }
-
-  canvas.toBlob(blob => {
-    if (!blob) {
-      console.error("Blob generation failed.");
-      alert("Failed to capture image. Please try again.");
-      return;
+    if (!childId) {
+        alert("User ID not found. Please log in or refresh the page.");
+        return;
     }
 
-    const formData = new FormData();
-    formData.append('image', blob, 'photo.png');
-    formData.append('childId', childId);
-
-    fetch('http://localhost:3000/api/postImageForAi', {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.error('Response error:', response.statusText);
-          alert('Failed to upload image.');
+    canvas.toBlob(blob => {
+        if (!blob) {
+            console.error("Blob generation failed.");
+            alert("Failed to capture image. Please try again.");
+            return;
         }
-      })
-      .then(data => {
-        if (data) {
-          console.log("Response from server:", data);
-          const toyId = data.response.toyId; // Get the toyId from the server response
-          alert(`Image uploaded successfully! Toy ID: ${toyId}`);
 
-          // Redirect to the new page with toyId in the query string
-          window.location.href = `form_toy.html?toyId=${toyId}`;
-        }
-      })
-      .catch(error => {
-        console.error('Network error:', error);
-        alert('A network error occurred. Please check your backend or try again later.');
-      });
-  }, 'image/png');
+        const formData = new FormData();
+        formData.append('image', blob, 'photo.png'); // Add the image
+        formData.append('childId', childId); // Add the childId
+
+        fetch('http://localhost:3000/api/postImageForAi', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    console.error('Response error:', response.statusText);
+                    alert('Failed to upload image.');
+                }
+            })
+            .then(data => {
+                if (data) {
+                    console.log("Response from server:", data);
+
+                    const { toyId, formData } = data.response; // Extract toyId and formData
+                    const { Name, Condition, Material, Tags } = formData; // Extract fields from formData
+
+                    // Check if all required fields are present
+                    if (toyId && Name && Condition && Material && Tags && Tags.length > 0) {
+                        alert(`Image uploaded successfully! Toy ID: ${toyId}`);
+
+                        // All data is complete; you can save the toy directly
+                        console.log("All data is complete. No need for additional form input.");
+                        // Optionally, you can directly process/save this data here
+                        window.location.href = `../inventory.html`;
+                    } else {
+                        // Redirect to the form page to complete missing data
+                        alert("Some data is missing. Redirecting to form...");
+                        window.location.href = `form_toy.html?toyId=${toyId}`;
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+                alert('A network error occurred. Please check your backend or try again later.');
+            });
+    }, 'image/png');
 });
