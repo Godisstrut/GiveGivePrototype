@@ -2,11 +2,16 @@
     font-family: 'game-boy';
     src: url("../resources/Fonts/Early\ GameBoy.ttf") format('truetype');
 }
+
+@font-face {
+    font-family: 'gg-font';
+    src: url("../../resources/Fonts/NeueBit-Bold.otf") format('opentype');
+}
  
  
  body{
-    font-family:'game-boy';
-    background-color: honeydew;
+    font-family:'gg-font';
+    background-color: #f3f2ef;
     background-image:url("../resources/img/gradient_without_point.png") ;
     background-size: auto;
 
@@ -15,7 +20,9 @@
  }
 
  h1{
-    color: purple;
+    color: #bdaed5;
+    padding-top: 30px;
+    font-weight: bolder;
 
  }
 
@@ -55,6 +62,12 @@ header{
     justify-content: center;
 
     
+}
+
+li{
+    list-style: none;
+
+
 }
 
 

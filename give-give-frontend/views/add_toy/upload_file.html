@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add new toy to your inventory</title>
-  <link href="../../styles/add_toy/upload_or_capture.css" rel="stylesheet">
+  <link href="../../styles/add_toy/upload_file.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,10 +24,8 @@
   <section id="intro">
     <h2>Add New Toy to Inventory</h2>
     <p>Upload or capture a picture of the toy you'd like to scan.</p>
-  </section>
-
+  
   <!-- Upload photo section -->
-  <section id="upload-photo">
     <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
       <label for="photo-upload"></label>
       <input type="file" id="photo-upload" name="photo" accept="image/*">
