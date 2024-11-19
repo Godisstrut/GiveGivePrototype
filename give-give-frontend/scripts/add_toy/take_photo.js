@@ -27,29 +27,45 @@ scattaFotoButton.addEventListener('click', () => {
 
 // Send the captured image to the server
 sendImgButton.addEventListener('click', () => {
-  // Convert the canvas content to a Blob
+  const childId = localStorage.getItem('userId'); // Recupera childId da localStorage
+
+  if (!childId) {
+    alert("User ID not found. Please log in or refresh the page.");
+    return;
+  }
+
   canvas.toBlob(blob => {
-    // Create a FormData object and append the Blob
+    if (!blob) {
+      console.error("Blob generation failed.");
+      alert("Failed to capture image. Please try again.");
+      return;
+    }
+
     const formData = new FormData();
-    formData.append('image', blob, 'photo.png'); 
-    
-    // Send the image to the server using fetch
+    formData.append('image', blob, 'photo.png'); // Nome del campo file deve essere 'image'
+    formData.append('childId', childId); // Aggiunge childId al formData
+
     fetch('http://localhost:3000/api/postImageForAi', {
       method: 'POST',
       body: formData
     })
-    .then(response => {
-      if (response.ok) {
-        console.log('Image successfully sent to the server.');
-        alert('Image uploaded successfully!');
-      } else {
-        console.error('Error uploading the image:', response.statusText);
-        alert('Failed to upload image.');
-      }
-    })
-    .catch(error => {
-      console.error('Network error:', error);
-      alert('A network error occurred.');
-    });
-  }, 'image/png'); 
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.error('Response error:', response.statusText);
+          alert('Failed to upload image.');
+        }
+      })
+      .then(data => {
+        if (data) {
+          console.log("Response from server:", data);
+          alert(`Image uploaded successfully! Toy ID: ${data.response.toyId}`);
+        }
+      })
+      .catch(error => {
+        console.error('Network error:', error);
+        alert('A network error occurred. Please check your backend or try again later.');
+      });
+  }, 'image/png');
 });

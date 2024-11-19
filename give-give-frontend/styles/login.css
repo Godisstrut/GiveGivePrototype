@@ -16,7 +16,7 @@ body {
     font-family: 'game-boy';
     background-color: #F6F5AE;
     box-sizing: border-box;
-    background: url(../resources/img/toys_background.jpg) no-repeat center center; 
+    background: url(../resources/img/backgroundGG.PNG) no-repeat center center; 
     background-size: cover;
     height: 100vh;
 }
