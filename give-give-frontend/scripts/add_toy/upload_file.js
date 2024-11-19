@@ -44,6 +44,16 @@ sendButton.addEventListener('click', () => {
     .then(data => {
       console.log('Image successfully sent:', data);
       alert('Image sent successfully!');
+      //Redirect user to the toy-form page with data from gemini if successfull
+      const queryString = new URLSearchParams({
+        name: data.name || '',
+        age: data.age || '',
+        condition: data.condition || '',
+        price: data.price || '',
+        material: data.material || ''
+      }).toString();
+      
+      window.location.href = `../views/toy_form.html?${queryString}`;
     })
     .catch(error => {
       console.error('Error sending image:', error);
