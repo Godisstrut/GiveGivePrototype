@@ -1,4 +1,4 @@
-require('dotenv').config();
+/*require('dotenv').config();
 
 const { GoogleAIFileManager } = require("@google/generative-ai/server");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -34,4 +34,4 @@ async function uploadAndAnalyzeImage(imagePath, displayName = "Uploaded Image") 
 }
 
 const mediaPath = '../test-images/test-toy-5.jpg';
-uploadAndAnalyzeImage(mediaPath, "test-toy");
+uploadAndAnalyzeImage(mediaPath, "test-toy");*/
