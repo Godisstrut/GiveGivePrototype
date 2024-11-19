@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { postToyForm } = require('../controllers/postToyForm');
+const { postToyFormController } = require('../controllers/postToyFormController');
 
 // Endpoint to get child_id from username to inventory
-router.post('/', postToyForm);
+router.post('/', postToyFormController);
 
 module.exports = router;
