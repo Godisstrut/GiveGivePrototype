@@ -40,5 +40,5 @@ const mediaPath = path.resolve(__dirname, '../test-images/test-toy-2.webp');
 uploadAndAnalyzeImage(mediaPath, "test-toy");
 */
 
-const mediaPath = '../test-images/test-toy-5.jpg';
-uploadAndAnalyzeImage(mediaPath, "test-toy");
+// const mediaPath = '../test-images/test-toy-5.jpg';
+// uploadAndAnalyzeImage(mediaPath, "test-toy");
