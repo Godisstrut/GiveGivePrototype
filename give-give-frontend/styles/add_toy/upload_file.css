@@ -124,14 +124,16 @@ input[type="file"] {
     border-style: outset;
     border-width: 12px;
     border-color: #bfb1be;
+    
 }
 
-#send-IMG button:hover {
+#send-IMG #send-img-to-api button:hover {
     background-color: #461d87;
     border-style: inset;
+
 }
 
-#send-IMG #gradient-text {
+#send-IMG #send-img-to-api {
     font-size: 20px;
     font-weight: bolder;
     background-image: url("../../resources/img/gradient_without_point_2.png");
@@ -139,6 +141,7 @@ input[type="file"] {
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
+    z-index:1;
 }
 
 
@@ -169,7 +172,8 @@ input[type="file"] {
 }
   
 section #send-IMG{
-    background-color: #461d87;
+    border: none;
+    width: auto;
 }
 
 /* Responsiv design */
