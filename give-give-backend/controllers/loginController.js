@@ -22,9 +22,9 @@ exports.login = async (req, res) => {
         }
         //If an id is found return it.
         else{
-            res.json(result.recordset);
+            res.status(200).json(result.recordset);
         }    
     } catch (err) {
-        res.status(500).json({ message: 'Database error', error: err.message });
+        res.status(500).json({ message: 'Database error'});
     }
 };
