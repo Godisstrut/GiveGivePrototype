@@ -49,6 +49,8 @@ sendButton.addEventListener('click', () => {
           }
       }).then(Data => {
         console.log(Data)
+        addToLocalStorage(Data);
+        goToToyForm();
       })
     } catch (error) {
       alert('Error during fetch:', error);
@@ -57,3 +59,13 @@ sendButton.addEventListener('click', () => {
     alert('No image to send. Please upload or capture an image first.');
   }
 });
+
+function addToLocalStorage(Data){
+    localStorage.setItem("ToyId", Data.response.toyId);
+    localStorage.setItem("Title", Data.response.formData.Title);
+    localStorage.setItem("Tags", Data.response.formData.Tags.join(','));
+}
+
+function goToToyForm(){
+    window.location.href = '../../views/toy_form.html'
+}

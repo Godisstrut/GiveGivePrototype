@@ -14,6 +14,8 @@ exports.postImageForAI = async (req, res) => {
             return res.status(400).json({ message: "File or childId missing"});
         }
 
+        //TODO:    Make a check for for if the childId exists in DB_
+
         // Access the image buffer for further processing (e.g., saving to storage or database)
         const imageBuffer = image.buffer;
         
