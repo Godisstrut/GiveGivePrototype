@@ -38,27 +38,30 @@ sendButton.addEventListener('click', () => {
   if (imageData) {
     try {
       fetch('http://localhost:3000/api/postImageForAi', {
-        method: 'POST',
-        body: formData, // Pass the FormData object
-      }).then(Response => {
-          if(!Response.ok){
-            console.log("response not okay", Response.status)
-          }
-          else{
-            return Response.json();
-          }
-      }).then(Data => {
-        console.log(Data)
-        addToLocalStorage(Data);
-        goToToyForm();
+          method: 'POST',
+          body: formData, // Pass the FormData object
       })
-    } catch (error) {
-      alert('Error during fetch:', error);
-    }
-  } else {
-    alert('No image to send. Please upload or capture an image first.');
-  }
-});
+      .then(response => {
+          if (!response.ok) {
+              console.error("Response not okay:", response.status);
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json(); // Parse the JSON response
+      })
+      .then(data => {
+          console.log("Response data:", data);
+          addToLocalStorage(data); // Add the data to localStorage
+          goToToyForm(); // Navigate to the next form
+      })
+      .catch(error => {
+          console.error("Error during fetch:", error);
+          alert(`Failed to send image: ${error.message}`);
+      });
+  } catch (error) {
+      // This catch block will handle any synchronous errors before the fetch call
+      alert('Unexpected error:', error);
+  }}});
+  
 
 function addToLocalStorage(Data){
     localStorage.setItem("ToyId", Data.response.toyId);

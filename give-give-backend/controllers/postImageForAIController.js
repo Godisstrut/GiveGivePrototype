@@ -48,7 +48,6 @@ exports.postImageForAI = async (req, res) => {
                 toyId: toyId,
                 formData: formData
             }
-            console.log("response success: ", response)
             return res.status(200).json({ response });
         } else {
             return res.status(500).json({ message: 'Failed to create toy or upload image.' });
