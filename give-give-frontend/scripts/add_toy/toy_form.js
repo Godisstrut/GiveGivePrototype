@@ -8,11 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Retrieve the toyId from the query string
     const toyId = getQueryParam('toyId');
 
-    if (!toyId) {
-        alert("Toy ID not found. Please go back and try again.");
-        return;
-    }
-
     console.log(`Toy ID retrieved: ${toyId}`);
 
     // Populate the hidden input field in the form with toyId
@@ -22,6 +17,43 @@ document.addEventListener('DOMContentLoaded', () => {
         toyIdInput.value = toyId; // Set the toyId in the hidden input
     }
 
+    // Gets HTML elements in toy-form by ID
+    const nameInput = document.getElementById('name');
+    const conditionInput = document.getElementById('condition');
+    const materialInput = document.getElementById('material');
+    const tagsSelect = document.getElementById('tags'); // Select element for tags
+
+    // Retrieve data from localStorage
+    const title = localStorage.getItem('Title');
+    const condition = localStorage.getItem('Condition');
+    const material = localStorage.getItem('Material');
+    const tagsFromStorage = localStorage.getItem('Tags'); // Retrieve Tags (comma-separated string)
+
+    // Pre-fill the input fields if the data exists
+    if (title) nameInput.value = title;
+    if (condition) conditionInput.value = condition;
+    if (material) materialInput.value = material;
+
+    // Populate the <select> element with options from localStorage
+    if (tagsFromStorage) {
+        const availableTags = tagsFromStorage.split(',').map(tag => tag.trim());
+        availableTags.forEach(tag => {
+            const option = document.createElement('option');
+            option.value = tag;
+            option.textContent = tag;
+            tagsSelect.appendChild(option);
+        });
+
+        // Pre-select tags if needed
+        Array.from(tagsSelect.options).forEach(option => {
+            if (option.value === title) {
+                option.selected = true;
+            }
+        });
+    } else {
+        console.warn("No tags found in localStorage.");
+    }
+
     // Handle form submission
     toyForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent default form submission
@@ -29,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Collect form data
         const formData = {
             Id: toyId, // Use the toyId retrieved from the query string
-            Name: document.getElementById('name').value.trim(),
-            Condition: document.getElementById('condition').value.trim(),
-            Material: document.getElementById('material').value.trim(),
-            Tags: document.getElementById('tags').value.trim().split(',').map(tag => tag.trim()) // Split tags by commas and trim whitespace
+            Name: nameInput.value.trim(),
+            Condition: conditionInput.value.trim(),
+            Material: materialInput.value.trim(),
+            Tags: Array.from(tagsSelect.selectedOptions).map(option => option.value) // Get selected tags
         };
 
         // Validate form data

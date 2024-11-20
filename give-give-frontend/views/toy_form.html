@@ -19,13 +19,21 @@
             <input type="text" id="name" name="Name" required>
     
             <label for="condition">Condition:</label>
-            <input type="text" id="condition" name="Condition" required>
+            <select id="condition" name="condition" required>
+                <option>
+                    <option value="Brand new">Brand new</option>
+                    <option value="Minimal wear">Minimal wear</option>
+                    <option value="Used">Used</option>
+                </option>
+            </select>
     
             <label for="material">Material:</label>
             <input type="text" id="material" name="Material" required>
     
             <label for="tags">Tags :</label>
-            <input type="text" id="tags" name="Tags" required>
+            <select id="tags" name="tags" multiple required>
+
+            </select>
 
             <button type="button" id="submit-toy">Submit</button>
         </form>
