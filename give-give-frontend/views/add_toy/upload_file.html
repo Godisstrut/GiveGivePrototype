@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add new toy to your inventory</title>
-  <link href="../../styles/add_toy/upload_or_capture.css" rel="stylesheet">
+  <link href="../../styles/add_toy/upload_file.css" rel="stylesheet">
 </head>
 
 <body>
   <header>
-    <h1> Welcome to GiveGive </h1>
+    <h1> GiveGive </h1>
     <nav class="nav-bar">
       <ul>
         <li><a href="../../views/inventory.html"> Go back to inventory </a></li>
@@ -18,27 +18,38 @@
     </nav>
 </header>
 
+<main>
 
-  <!-- Upload photo section -->
-  <div id="upload-photo">
+  <!-- Introduction section -->
+  <section id="intro">
+    <h2>Add New Toy to Inventory</h2>
+    <p>Upload or capture a picture of the toy you'd like to scan.</p>
+  
+    <!-- Upload photo section -->
     <form id="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
-      <label for="photo-upload">Upload picture of toy you want to scan:</label>
+      <label for="photo-upload"></label>
       <input type="file" id="photo-upload" name="photo" accept="image/*">
     </form>
-  </div>
+  </section>
 
   <!-- Preview section -->
-  <div id="preview-of-pic">
+  <section id="preview-of-pic">
     <h2>Preview of selected image</h2>
-    <img id="preview-img" src="" alt="Preview will appear here" width="300">
-  </div>
+      <div id="canvas">
+        <img id="preview-img" src="" alt="Preview will appear here" width="300">
+      </div>
 
-  <!-- Button to send image to API -->
-  <div id="send-IMG">
-    <button id="send-img-to-api">Send</button>
-  </div>
+
+    <!-- Button to send image to API -->
+    <section id="send-IMG">
+      <button id="send-img-to-api">Send</button>
+    </section>
+  </section>
+
+</main>
 
   <!-- Move JavaScript to end of body -->
   <script src="../../scripts/add_toy/upload_file.js"></script>
+
 </body>
 </html>
