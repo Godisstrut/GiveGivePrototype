@@ -35,6 +35,6 @@ exports.uploadPixelatedImage = async(image, id, Title, Tags, Age_recommendation,
     } catch (error) {
         // Catch block with error parameter to provide specific error details
         console.error("Failed uploading image:", error);
-        return false;
+        return null;
     }
 };

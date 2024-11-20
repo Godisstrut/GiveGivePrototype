@@ -1,7 +1,8 @@
 
   const photoUpload = document.getElementById('photo-upload');
   const previewImg = document.getElementById('preview-img');
-  const sendButton = document.getElementById('send-img-to-api')
+  const sendButton = document.getElementById('send-img-to-api');
+
 
   // Preview uploaded image from local device
   photoUpload.addEventListener("change", function(event) {
@@ -28,37 +29,30 @@ sendButton.addEventListener('click', () => {
   // Create a FormData object
   const formData = new FormData();
   formData.append('image', file);
+  if(localStorage.getItem('userId') === null) {
+    alert("you are not logged in :)")  
+    window.location.href = '../../views/login.html'
+  }
   formData.append('childId', localStorage.getItem('userId'));
 
   if (imageData) {
-    fetch('http://localhost:3000/api/postImageForAi', { // Corrected syntax for fetch
-      method: 'POST', 
-      body: formData
-      
-      /*headers: {
-        'Content-Type': 'application/json', 
-      }, */
-      //body: JSON.stringify({ image: imageData, childId: 1 })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Image successfully sent:', data);
-      alert('Image sent successfully!');
-      //Redirect user to the toy-form page with data from gemini if successfull
-      const queryString = new URLSearchParams({
-        name: data.name || '',
-        age: data.age || '',
-        condition: data.condition || '',
-        price: data.price || '',
-        material: data.material || ''
-      }).toString();
-      
-      window.location.href = `../views/toy_form.html?${queryString}`;
-    })
-    .catch(error => {
-      console.error('Error sending image:', error);
-      alert('Failed to send image.');
-    });
+    try {
+      fetch('http://localhost:3000/api/postImageForAi', {
+        method: 'POST',
+        body: formData, // Pass the FormData object
+      }).then(Response => {
+          if(!Response.ok){
+            console.log("response not okay", Response.status)
+          }
+          else{
+            return Response.json();
+          }
+      }).then(Data => {
+        console.log(Data)
+      })
+    } catch (error) {
+      alert('Error during fetch:', error);
+    }
   } else {
     alert('No image to send. Please upload or capture an image first.');
   }
