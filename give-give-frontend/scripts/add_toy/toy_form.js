@@ -6,38 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return [toyId, title, tags];
     }
 
-    function populateTags(tags) {
-        const tagsContainer = document.getElementById("tags-container");
-        tagsContainer.innerHTML = '';
-        const tagsArray = tags.split(',')
-        tagsArray.forEach((tag, index) => {
-            const tagContainer = document.createElement('div')
-            tagContainer.id = 'tag-container';
-            const tagsInput = document.createElement('input')
-            tagsInput.type = 'text';
-            tagsInput.name = `tag${index}`
-            tagsInput.value = tag
-            tagsInput.setAttribute('maxlength', '25')
-
-            tagContainer.appendChild(tagsInput)
-            const removeButton = createRemoveButton()
-            tagContainer.appendChild(removeButton);
-            tagsContainer.appendChild(tagContainer);
-        });
-    }
-
-    function createRemoveButton() {
-        const removeButton = document.createElement('button');
-        removeButton.id = 'remove-button';
-        removeButton.addEventListener('click', () => {
-
-            const parent = removeButton.parentNode
-            parent.remove()
-
-        })
-        return removeButton;
-    }
-
     function populateForm() {
         const [toyId, title, tags] = getIdentifiedData();
         const toyIdInput = document.getElementById('toy-id');
@@ -48,9 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
         //if (toyTagsInput) toyTagsInput.value = tags || '';
         populateTags(tags)
     }
-
+    
     populateForm();
 
+    const addNewTagLink = document.getElementById("add-tag-link");
+    
+    
+    addNewTagLink.addEventListener('click', () => {
+        const tagsContainer = document.getElementById("tags-container");
+
+        //Check to see if there are already 10 tags and doesnt allow you to create more than 10 tags.
+        if(tagsContainer.childElementCount >= 10){
+            alert("you can maximum have 10 tags for each toy")
+        }
+        else{
+            //Create an empty tag and adds it to the tagsContainer
+            const tagContainer = createTag("");
+            tagsContainer.appendChild(tagContainer);
+            getTagArrayFromTagElements();
+        } 
+    });
+    
     const toyForm = document.getElementById('toy-form');
     if (!toyForm) {
         console.error("Form element not found");
@@ -65,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Name: document.getElementById('title').value.trim(),
             Condition: document.getElementById('condition').value.trim(),
             Material: document.getElementById('material').value.trim(),
-            Tags: document.getElementById('tags').value.trim().split(',').map(tag => tag.trim())
+            Tags: getTagArrayFromTagElements()
+            //Tags: document.getElementById('tags').value.trim().split(',').map(tag => tag.trim())
         };
 
         if (!formData.Id || !formData.Name || !formData.Condition || !formData.Material || formData.Tags.length === 0) {
@@ -98,5 +85,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
           
         
-    });
+        
+    });    
 });
+
+
+function createTagInput(tag){
+    const tagInput = document.createElement('input')
+    tagInput.type = 'text';
+    tagInput.name = `tag`
+    tagInput.value = tag
+    tagInput.setAttribute('maxlength', '25')
+    
+    return tagInput
+}
+
+function createRemoveTagButton() {
+    const removeButton = document.createElement('button');
+    removeButton.id = 'remove-button';
+    
+    //Add onClick method to remove itself and its parent container on click.
+    removeButton.addEventListener('click', () => {
+        const parent = removeButton.parentNode
+        parent.remove()
+    })
+    
+    return removeButton;
+}
+
+function populateTags(tags) {
+    //Resets the tag container.
+    const tagsContainer = document.getElementById("tags-container");
+    tagsContainer.innerHTML = '';
+    
+    //Split the tag string into multiple tags and create individual inputs for each tag.
+    tags.split(',').forEach((tag) => {
+        const tagContainer = createTag(tag)
+        tagsContainer.appendChild(tagContainer);
+    });
+}
+
+function createTag(tag){
+    //Create a container for the input and the button of a tag.
+    const tagContainer = document.createElement('div')
+    tagContainer.id = 'tag-container';
+
+    //Create input and buttons
+    const tagsInput = createTagInput(tag);
+    const removeButton = createRemoveTagButton();
+
+    //Add Input and Button element into the tag container
+    tagContainer.appendChild(tagsInput)
+    tagContainer.appendChild(removeButton);
+
+    return tagContainer
+}
+
+function getTagArrayFromTagElements(){
+    
+    let tags = [];
+
+    // Create an array of all tagContainers
+    const tagsContainer = document.getElementById('tags-container');
+    const tagContainers = tagsContainer.querySelectorAll('#tag-container');
+
+// Iterate over each tag-container and get the text from the input field
+    tagContainers.forEach(tagContainer => {
+        const inputElement = tagContainer.querySelector('input[name="tag"]');
+        if (inputElement) {
+            const tag = inputElement.value.trim();
+            if(tag != "") tags.push(tag);
+        }
+    });
+    
+    return tags
+}
+
+
+
+
