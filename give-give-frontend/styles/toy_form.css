@@ -28,7 +28,7 @@ body {
     width: 100%;
     height: 100%;
 }
-
+/* container styling for the toy-form itself */
 #toy-form {
     background-color: #fff;
     padding: 1.5rem;
@@ -45,15 +45,22 @@ body {
 }
 
 #toy-form label {
-    margin: 10px 0 5px;
+    margin: 0.5rem 0;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 #toy-form input, select {
     width: 100%;
     padding: 0.3rem;
     margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
 }
 
+/* submit button for the toy form */
 #submit-toy  {
   align-items: center;
   background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
@@ -90,40 +97,45 @@ body {
 #submit-toy:hover {
   outline: 0;
   background-image: linear-gradient(135deg, #3b8d99 40%, #6bdfd1);
-  transition: 1s ease;
+  transition: 1s ease-in-out;
 }
 
 #tags-container {
     display: flex;
-    flex-direction: column; /* Each #tag-container stacks vertically */
-    gap: 0.5rem; /* Space between each #tag-container */
+    flex-direction: column; 
+    gap: 0.5rem; 
 }
 
 #tag-container {
     display: flex;
-    align-items: center; /* Align items (input and button) vertically centered */
-    gap: 0.5rem; /* Space between the input and button */
+    align-items: center; 
+    gap: 0.5rem; 
 }
 
 #tag-container input {
     flex: 1; 
+    padding: 0.3rem; 
+    margin: 0;
 }
 
+/* styling for the remvoe buttons adjacent to the tags input fields */
 #remove-button {
+    background-image: url(../resources/img/red_remove.jpg);
+    background-size: cover;
     position: static; 
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    background-color: #f34079;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0; /* Remove the bottom margin for better alignment */
+    transition: 0.2s ease;
+    margin: 0; 
+    border: none;
 }
 
 #remove-button:hover {
     background-color: #fc894d;
+    transform: scale(1.12);
 }
