@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tagsInput.type = 'text';
             tagsInput.name = `tag${index}`
             tagsInput.value = tag
+            tagsInput.setAttribute('maxlength', '25')
 
             tagContainer.appendChild(tagsInput)
             const removeButton = createRemoveButton()
