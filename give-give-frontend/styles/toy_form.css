@@ -15,6 +15,7 @@ body {
     background-color: honeydew;
     background-image:url("../resources/img/gradient_without_point.png") ;
     background-size: auto;
+    
 }
 
 #popup-container {
@@ -47,22 +48,72 @@ body {
     margin: 10px 0 5px;
 }
 
-#toy-form input {
+#toy-form input, select {
     width: 100%;
     padding: 0.3rem;
     margin-bottom: 0.5rem;
 }
 
-#toy-form button {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: #00B4D8;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
+#submit-toy  {
+  align-items: center;
+  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 700;
+  height: 54px;
+  justify-content: center;
+  letter-spacing: .4px;
+  line-height: 1;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 1rem;
 }
 
-#toy-form button:hover {
-    background-color: #0056b3;
-    transition: 0.5s ease;
+#submit-toy :active {
+  outline: 0;
+  transform: scale(0.95);
+}
+
+#submit-toy:hover {
+  outline: 0;
+  background-image: linear-gradient(135deg, #3b8d99 40%, #6bdfd1);
+  transition: 1s ease;
+}
+
+#remove-button {
+    position: relative;
+    left: 16rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    color: white;
+    background-color: #f34079;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+}
+
+
+input #remove-button {
+    position: relative;
+    right:0;
+}
+
+#remove-button:hover {
+    background-color: #fc894d;
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toy form</title>
     <link href="../styles/toy_form.css" rel="stylesheet">
-    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="../scripts/add_toy/toy_form.js"></script> 
 </head>
 <body>
@@ -19,7 +19,10 @@
             <input type="text" id="title" name="title" required>
 
             <label for="tags">Tags :</label>
-            <input type="text" id="tags" name="Tags" required>
+            <div id="tags-container">
+                
+
+            </div>
     
             <label for="condition">Condition:</label>
             <select id="condition" name="condition" required>
@@ -31,8 +34,13 @@
             </select>
     
             <label for="material">Material:</label>
-            <input type="text" id="material" name="Material" required>
-
+            <select id="material" name="material" required>
+                <option>
+                    <option value="Plastic">Plastic</option>
+                    <option value="Fabric">Fabric</option>
+                    <option value="Wood">Wood</option>
+                </option>
+            </select>
             <button type="submit" id="submit-toy">Submit</button>
         </form>
     </div>

@@ -6,14 +6,46 @@ document.addEventListener('DOMContentLoaded', () => {
         return [toyId, title, tags];
     }
 
+    function populateTags(tags) {
+        const tagsContainer = document.getElementById("tags-container");
+        tagsContainer.innerHTML = '';
+        const tagsArray = tags.split(',')
+        tagsArray.forEach((tag, index) => {
+            const tagContainer = document.createElement('div')
+            tagContainer.id = 'tag-container';
+            const tagsInput = document.createElement('input')
+            tagsInput.type = 'text';
+            tagsInput.name = `tag${index}`
+            tagsInput.value = tag
+
+            tagContainer.appendChild(tagsInput)
+            const removeButton = createRemoveButton()
+            tagContainer.appendChild(removeButton);
+            tagsContainer.appendChild(tagContainer);
+        });
+    }
+
+    function createRemoveButton() {
+        const removeButton = document.createElement('button');
+        removeButton.id = 'remove-button';
+        removeButton.addEventListener('click', () => {
+
+            const parent = removeButton.parentNode
+            parent.remove()
+
+        })
+        return removeButton;
+    }
+
     function populateForm() {
         const [toyId, title, tags] = getIdentifiedData();
         const toyIdInput = document.getElementById('toy-id');
         if (toyIdInput) toyIdInput.value = toyId || '';
         const toyTitleInput = document.getElementById('title');
         if (toyTitleInput) toyTitleInput.value = title || '';
-        const toyTagsInput = document.getElementById('tags');
-        if (toyTagsInput) toyTagsInput.value = tags || '';
+        //const toyTagsInput = document.getElementById('tags');
+        //if (toyTagsInput) toyTagsInput.value = tags || '';
+        populateTags(tags)
     }
 
     populateForm();
