@@ -7,7 +7,7 @@
  body{
     font-family:'game-boy';
     background-color: honeydew;
-    background-image:url("../../resources/img/gradient_without_point.png") ;
+    background-image:url("../../resources/img/gradient-original.png") ;
     background-size: auto;
 
     
@@ -15,7 +15,7 @@
  }
 
  h1{
-    color: purple;
+    color: black;
 
  }
 
@@ -67,7 +67,7 @@ button{
     padding: 20px;
     border-radius: 5px;
     background-size: cover;
-    color: white;
+    color: #f3f2ef;
     font-family: 'game-boy';
     background-image: url("../../resources/img/Flower_Gradient_2.png");
 }
@@ -96,7 +96,8 @@ button{
     max-width: 360px; 
     max-height: 270px; 
     aspect-ratio: 4 / 3; 
-    border: 4px solid #007BFF; 
+    border: 4px solid #e0e232;
+    border-image: url(../../resources/img/gradient-flipped.png) 30 stretch; 
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
     margin: 10px 0; 
@@ -113,7 +114,8 @@ button{
     #canvas {
         max-width: 280px; 
         max-height: 210px; 
-        border: 3px solid #007BFF;
+        border: 3px solid #e0e232;
+        border-image: url(../../resources/img/gradient-flipped.png) 30 stretch;
     }
 }
 
@@ -123,7 +125,8 @@ button{
     #canvas {
         max-width: 200px; 
         max-height: 150px; 
-        border: 2px solid #007BFF; 
+        border: 2px solid #e0e232;
+        border-image: url(../../resources/img/gradient-flipped.png) 30 stretch; 
     }
 
     button {

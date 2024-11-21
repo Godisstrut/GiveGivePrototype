@@ -11,7 +11,7 @@
 body {
     font-family: 'game-boy';
     background-color: honeydew;
-    background-image: url("../../resources/img/gradient_without_point.png");
+    background-image: url("../../resources/img/gradient-original.png");
     background-size: cover;
     background-position: center;
     margin: 0;
@@ -32,8 +32,9 @@ header {
 }
 
 header h1 {
-    color: purple;
-    font-size: 2.5em;
+    font-family: 'gg-font';
+    color: black;
+    font-size: 60px;
     margin: 0;
 }
 
@@ -49,7 +50,7 @@ header h1 {
 .nav-bar a {
     text-decoration: none;
     font-size: 1.2em;
-    color: purple;
+    color: #461d87;
     transition: color 0.3s ease;
 }
 
@@ -130,6 +131,7 @@ input[type="file"] {
 
 
 
+
 #send-IMG #send-img-to-api {
     font-size: 20px;
     font-weight: bolder;
@@ -143,15 +145,13 @@ input[type="file"] {
 
 
 
-#send-IMG button:hover {
-    
-  
-    background-color: #461d87;
-    border-radius: 0;
-    border-style: outset;
-    border-width: 12px;
-    border-color: #bfb1be;
-  }
+#send-img-to-api:hover {   
+    background-color: #461d87 !important;
+    border-radius: 0 !important;
+    border-style: outset !important;
+    border-width: 12px !important;
+    border-color: #bfb1be !important;
+}
 
 #preview-of-pic {
     text-align: center;
@@ -162,8 +162,8 @@ input[type="file"] {
     width: 300px;
     height: 300px;
     margin: 0 auto;
-    background-color: #f3f2ef; /* Ljus bakgrund */
-    border: 5px dashed #bfb1be; /* Ram för att ge ett "canvas"-utseende */
+    background-color: #f3f2ef;
+    border: 5px dashed #bfb1be; 
     display: flex;
     align-items: center;
     justify-content: center;

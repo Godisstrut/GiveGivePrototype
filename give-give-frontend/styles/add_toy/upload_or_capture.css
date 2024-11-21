@@ -11,8 +11,8 @@
 
 body {
     font-family: 'game-boy';
-    background-color: honeydew;
-    background-image: url("../../resources/img/gradient_without_point.png"); /* Adjust if the path differs */
+    background-color: #f3f2ef;
+    background-image: url("../../resources/img/gradient-original.png"); /* Adjust if the path differs */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,8 +24,17 @@ body {
 }
 
 
-h1, h2 {
-    color: purple;
+h1{
+    font-family: 'gg-font';
+    font-weight: bolder;
+    font-size: 60px;
+    margin: 10px;
+
+
+}
+
+h2 {
+    color: #461d87;
     font-family: 'game-boy';
 }
 
@@ -56,7 +65,7 @@ header {
 
 .nav-bar a {
     text-decoration: none;
-    color: purple;
+    color: #461d87;
     font-size: 1.1em;
 }
 
@@ -79,7 +88,7 @@ header {
     padding: 20px;
     border-radius: 5px;
     background-size: cover;
-    color: white;
+    color: #f3f2ef;
     font-family: 'game-boy';
 }
 
