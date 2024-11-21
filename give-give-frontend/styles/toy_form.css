@@ -139,3 +139,14 @@ body {
     background-color: #fc894d;
     transform: scale(1.12);
 }
+
+#add-tag-link {
+    font-size: small !important;
+    color: blue; /* Make the text blue like a typical link */
+    text-decoration: underline; /* Add underline to mimic a link */
+    cursor: pointer; /* Change the cursor to a pointer when hovering */
+}
+
+#add-tag-link:hover {
+    color: darkblue; /* Optional: Change color on hover for better interactivity */
+}
