@@ -75,7 +75,7 @@ sendImgButton.addEventListener('click', () => {
                     } else {
                         // Redirect to the form page to complete missing data
                         alert("Some data is missing. Redirecting to form...");
-                        window.location.href = `form_toy.html?toyId=${toyId}`;
+                        window.location.href = `../../views/toy_form.html?toyId=${toyId}`;
                     }
                 }
             })
