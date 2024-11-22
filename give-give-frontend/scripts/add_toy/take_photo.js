@@ -61,22 +61,10 @@ sendImgButton.addEventListener('click', () => {
                 if (data) {
                     console.log("Response from server:", data);
 
-                    const { toyId, formData } = data.response; // Extract toyId and formData
-                    const { Name, Condition, Material, Tags } = formData; // Extract fields from formData
-
-                    // Check if all required fields are present
-                    if (toyId && Name && Condition && Material && Tags && Tags.length > 0) {
-                        alert(`Image uploaded successfully! Toy ID: ${toyId}`);
-
-                        // All data is complete; you can save the toy directly
-                        console.log("All data is complete. No need for additional form input.");
-                        // Optionally, you can directly process/save this data here
-                        window.location.href = `../inventory.html`;
-                    } else {
+                    addToLocalStorage(data); // Add the data to localStorage
                         // Redirect to the form page to complete missing data
-                        alert("Some data is missing. Redirecting to form...");
-                        window.location.href = `../../views/toy_form.html?toyId=${toyId}`;
-                    }
+                        window.location.href = `../../views/toy_form.html`;
+                    
                 }
             })
             .catch(error => {
@@ -85,3 +73,9 @@ sendImgButton.addEventListener('click', () => {
             });
     }, 'image/png');
 });
+
+function addToLocalStorage(Data){
+    localStorage.setItem("ToyId", Data.response.toyId);
+    localStorage.setItem("Title", Data.response.formData.Title);
+    localStorage.setItem("Tags", Data.response.formData.Tags.join(','));
+}
