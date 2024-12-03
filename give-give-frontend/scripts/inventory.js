@@ -17,10 +17,10 @@ fetch(`http://localhost:3000/api/getProfile?id=${localStorage.getItem('userId')}
     .then(data => {
         console.log(data); 
 
-        document.getElementById('name').textContent = `Name: ${data[0].child_name}`;
-        document.getElementById('parent-name').textContent = `Parent name: ${data[0].parent_name}`;
-        document.getElementById('toys-traded').textContent = `Toys traded: ${data[0].toys_traded}`;
-        document.getElementById('toys-in-inventory').textContent = `Toys in inventory: ${data[0].items_in_inventory}`;
+        document.getElementById('name').textContent = `Name: ${data.childName}`;
+        document.getElementById('parent-name').textContent = `Parent name: ${data.parentName}`;
+        document.getElementById('toys-traded').textContent = `Toys traded: ${data.totalTrades}`;
+        document.getElementById('toys-in-inventory').textContent = `Toys in inventory: ${data.totalToys}`;
     })
 
     

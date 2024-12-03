@@ -52,41 +52,47 @@ document.addEventListener('DOMContentLoaded', () => {
             Condition: document.getElementById('condition').value.trim(),
             Material: document.getElementById('material').value.trim(),
             Tags: getTagArrayFromTagElements()
-            //Tags: document.getElementById('tags').value.trim().split(',').map(tag => tag.trim())
         };
-
+    
         if (!formData.Id || !formData.Name || !formData.Condition || !formData.Material || formData.Tags.length === 0) {
             console.log("Validation failed. Form data:", formData);
             alert("Please fill in all fields.");
             return;
         }
-
+    
         try {
             const response = await fetch('http://localhost:3000/api/postToyForm', {
-                method: 'POST',
+                method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-        
-            if (response.ok) {
+    
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
                 const result = await response.json();
-                console.log("Form successfully submitted:", result);
-                alert("Toy information saved successfully!");
-                toyForm.reset();
-                window.location.href = 'inventory.html';
+                if (response.ok) {
+                    console.log("Form successfully submitted:", result);
+                    alert("Toy information saved successfully!");
+                    toyForm.reset();
+                    window.location.href = 'inventory.html';
+                } else {
+                    console.error("Error from backend:", result);
+                    alert(`Failed to save toy information: ${result.message || 'Unknown error'}`);
+                }
             } else {
-                const errorData = await response.json();
-                console.error("Error from backend:", errorData);
-                alert(`Failed to save toy information: ${errorData.message || 'Unknown error'}`);
+                const text = await response.text();
+                console.error("Unexpected response format:", text);
+                alert(`Unexpected response from server: ${text}`);
             }
         } catch (error) {
             console.error("Error during form submission:", error);
             alert("An error occurred. Please try again later.");
         }
+    });
+    
           
         
         
-    });    
 });
 
 

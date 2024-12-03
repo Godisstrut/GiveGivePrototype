@@ -42,7 +42,7 @@ async function login() {
         console.log('Login successful:', data);
 
         
-        userId = data[0].Id; 
+        userId = data[0].id; 
         
        
         localStorage.setItem('userId', userId); 
